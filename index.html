@@ -102,7 +102,7 @@
 
       console.log("🔥 Firebase (App + Firestore + Auth) initialized globally");
     </script>
-
+    
 
     <style>
         .table-btn {
@@ -893,6 +893,56 @@
     <!-- ========================= JS here ========================= -->
 
     <!-- JavaScript -->
+
+    <script type="module">
+      import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } 
+        from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      const auth = getAuth(window.firebaseApp); // use global Firebase app
+      const provider = new GoogleAuthProvider();
+
+      // 🟢 Listen for auth state changes
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          // 🚨 Show SweetAlert popup immediately
+          Swal.fire({
+            title: "🔒 Please Sign In",
+            text: "You must log in with your authorized Google account to continue.",
+            icon: "warning",
+            showCancelButton: false,
+            confirmButtonText: "Login with Google",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            customClass: {
+              confirmButton: "btn btn-primary fw-semibold px-4 rounded-pill"
+            }
+          }).then(() => {
+            // Trigger Google Login
+            signInWithPopup(auth, provider)
+              .then((result) => {
+                const email = result.user.email;
+                Swal.fire({
+                  title: "✅ Logged In",
+                  text: `Welcome, ${email}!`,
+                  icon: "success",
+                  timer: 2000,
+                  showConfirmButton: false
+                });
+              })
+              .catch((error) => {
+                console.error("Login Error:", error);
+                Swal.fire({
+                  title: "❌ Login Failed",
+                  text: error.message,
+                  icon: "error"
+                });
+              });
+          });
+        } else {
+          console.log(`🔓 Logged in as: ${user.email}`);
+        }
+      });
+      </script>
 
 
     <!-- ############################################################################################ -->
