@@ -21,13 +21,6 @@
       // ✅ Import Firebase modules
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
       import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-      import { 
-        getAuth, 
-        GoogleAuthProvider, 
-        signInWithPopup, 
-        signOut, 
-        onAuthStateChanged 
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
       // ✅ Your Firebase config
       const firebaseConfig = {
@@ -39,69 +32,17 @@
         appId: "1:800499847619:web:8008e9016d125f924c2d76"
       };
 
-      // ✅ Initialize app, Firestore, and Auth
+      // ✅ Initialize Firebase App and Firestore
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-      const auth = getAuth(app);
-      const provider = new GoogleAuthProvider();
 
       // ✅ Expose globally for other scripts
       window.firebaseApp = app;
       window.firebaseDB = db;
-      window.firebaseAuth = auth;
 
-      // ✅ Google Login function (available globally)
-      window.googleLogin = async function () {
-        try {
-          const result = await signInWithPopup(auth, provider);
-          const user = result.user;
-          console.log("✅ Signed in as:", user.email);
-          Swal.fire({
-            icon: "success",
-            title: "Login Successful",
-            text: `Welcome ${user.displayName || user.email}`
-          });
-          return user;
-        } catch (error) {
-          console.error("❌ Google Sign-In Error:", error);
-          Swal.fire({
-            icon: "error",
-            title: "Login Failed",
-            text: error.message
-          });
-        }
-      };
-
-      // ✅ Google Logout function (available globally)
-      window.googleLogout = async function () {
-        try {
-          await signOut(auth);
-          console.log("👋 User signed out");
-          Swal.fire({
-            icon: "info",
-            title: "Signed Out",
-            text: "You have been logged out successfully."
-          });
-        } catch (error) {
-          console.error("❌ Logout Error:", error);
-        }
-      };
-
-      // ✅ Monitor Auth State (persists across reloads)
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log(`🔓 Logged in as: ${user.email}`);
-          document.body.classList.add("user-logged-in");
-          sessionStorage.setItem("loggedInUser", user.email);
-        } else {
-          console.log("🔒 No user logged in");
-          document.body.classList.remove("user-logged-in");
-          sessionStorage.removeItem("loggedInUser");
-        }
-      });
-
-      console.log("🔥 Firebase (App + Firestore + Auth) initialized globally");
+      console.log("🔥 Firebase (App + Firestore) initialized globally");
     </script>
+
     
 
     <style>
@@ -918,55 +859,7 @@
 
     <!-- JavaScript -->
 
-    <script type="module">
-      import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } 
-        from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-      const auth = getAuth(window.firebaseApp); // use global Firebase app
-      const provider = new GoogleAuthProvider();
-
-      // 🟢 Listen for auth state changes
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          // 🚨 Show SweetAlert popup immediately
-          Swal.fire({
-            title: "🔒 Please Sign In",
-            text: "You must log in with your authorized Google account to continue.",
-            icon: "warning",
-            showCancelButton: false,
-            confirmButtonText: "Login with Google",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            customClass: {
-              confirmButton: "btn btn-primary fw-semibold px-4 rounded-pill"
-            }
-          }).then(() => {
-            // Trigger Google Login
-            signInWithPopup(auth, provider)
-              .then((result) => {
-                const email = result.user.email;
-                Swal.fire({
-                  title: "✅ Logged In",
-                  text: `Welcome, ${email}!`,
-                  icon: "success",
-                  timer: 2000,
-                  showConfirmButton: false
-                });
-              })
-              .catch((error) => {
-                console.error("Login Error:", error);
-                Swal.fire({
-                  title: "❌ Login Failed",
-                  text: error.message,
-                  icon: "error"
-                });
-              });
-          });
-        } else {
-          console.log(`🔓 Logged in as: ${user.email}`);
-        }
-      });
-      </script>
+    
 
 
     <!-- ############################################################################################ -->
@@ -1950,4 +1843,3 @@
     <script src="assets/js/main.js"></script>
   </body>
 </html>
-
