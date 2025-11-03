@@ -181,6 +181,20 @@
          &nbsp;
          &nbsp;
         <section class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <div class="search-box-wrapper mb-3">
+            <div class="search-box input-group">
+            <span class="input-group-text bg-light border-end-0">
+                <i class="lni lni-search"></i>
+            </span>
+            <input
+                type="text"
+                id="tableSearch"
+                class="form-control border-start-0 shadow-none"
+                placeholder="Search products..."
+                onkeyup="filterTable()"
+            />
+            </div>
+        </div>
         <div class="table-responsive">
             <table id="productTable" class="table table-bordered align-middle text-left">
             <thead class="table">
@@ -440,6 +454,30 @@
         loadProducts();
     </script>
 
+    <script>
+        // 🔎 Filter function for the table
+        function filterTable() {
+            const input = document.getElementById("tableSearch");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("productTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+            const tds = tr[i].getElementsByTagName("td");
+            let rowMatch = false;
+
+            for (let td of tds) {
+                if (td.textContent.toLowerCase().includes(filter)) {
+                rowMatch = true;
+                break;
+                }
+            }
+
+            tr[i].style.display = rowMatch ? "" : "none";
+            }
+        }
+        </script>
+
 
 
 
@@ -585,6 +623,53 @@
             }
             #productTable td {
                 font-size: 11px;
+            }
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-box {
+            width: 280px;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-box input {
+            border: none;
+            background: #f8f9fa;
+            outline: none;
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+
+        .search-box .input-group-text {
+            background: #f8f9fa;
+            border: none;
+            color: #D94B86;
+            font-size: 18px;
+        }
+
+        /* 📱 Responsive design */
+        @media (max-width: 768px) {
+            .search-box-wrapper {
+            justify-content: center;
+            width: 100%;
+            }
+
+            .search-box {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 20px;
+            }
+
+            .search-box input {
+            font-size: 13px;
+            padding: 8px 12px;
             }
         }
     </style>
