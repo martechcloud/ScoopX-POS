@@ -123,6 +123,12 @@
 	        line-height: 1.2;
 	    }
 
+      @media (max-width: 576px) {
+        .product-card {
+          width: 40%; /* ensures 2 cards per row on mobile */
+        }
+      }
+
         .top-bar {
             display: flex;
             align-items: center;
@@ -174,6 +180,36 @@
             border: none;
             color: #D94B86;
             font-size: 18px;
+        }
+
+        /* 📱 Responsive Full-Width Search Bar (Mobile) */
+        @media (max-width: 767px) {
+          .top-bar .input-group,
+          .search-box {
+            width: 100% !important;
+            max-width: 100%;
+            border-radius: 12px;
+          }
+
+          .search-box {
+            display: flex;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 4px 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+          }
+
+          .search-box .input-group-text {
+            background: transparent;
+            color: #D94B86;
+            font-size: 18px;
+          }
+
+          .search-box input {
+            width: 100%;
+            background: transparent;
+            font-size: 15px;
+          }
         }
 
         /* Button styling */
@@ -393,6 +429,7 @@
             font-size: 18px;
             transition: all 0.3s ease-in-out;
             margin-right: 6px;
+            
         }
 
         /* Hover: subtle scale + color brightness */
@@ -497,6 +534,68 @@
             -webkit-box-shadow: 0 0 0px 1000px white inset !important;
             box-shadow: 0 0 0px 1000px white inset !important;
         }
+
+        /* Legend Wrapper */
+        .legend-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 18px;
+          margin-bottom: 1rem;
+          padding: 8px 12px;
+          position: relative;
+          z-index: 2; /* ensures it stays above background but below sticky header */
+        }
+
+        /* Each Legend Item */
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-weight: 500;
+          font-size: 14px;
+          color: #333;
+          white-space: nowrap;
+        }
+
+        /* Color Dot */
+        .legend-color {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+
+        /* 🟣 Tablet screens */
+        @media (max-width: 768px) {
+          .legend-container {
+            justify-content: center;
+            gap: 14px;
+            margin-top: 8px;
+          }
+
+          .legend-item {
+            font-size: 13px;
+          }
+        }
+
+        /* 🩷 Mobile screens */
+        @media (max-width: 480px) {
+          .legend-container {
+            justify-content: center;
+            gap: 10px 20px;
+            row-gap: 8px;
+            margin-top: 50px; /* ✅ pushes it down below header */
+            padding-top: 6px;
+          }
+
+          .legend-item {
+            flex: 1 1 45%; /* 2 items per row */
+            justify-content: center;
+            font-size: 12px;
+          }
+        }
     </style>
 
   </head>
@@ -550,7 +649,7 @@
                     <div class="header-action d-flex align-items-center" style="gap: 15px;">
                       <a href="#0" title="Add Product" class="icon-btn add"><i class="lni lni-upload"></i></a>
                       <a href="#0" title="Delete Product" class="icon-btn delete"><i class="lni lni-trash"></i></a>
-                      <a href="#0" title="Billing" class="icon-btn billing"><i class="lni lni-book"></i></a>
+                      <a href="product.html" title="Billing" class="icon-btn billing"><i class="lni lni-book"></i></a>
                       <a href="#0" title="login" onclick="googleLogin()" class="icon-btn login"><i class="lni lni-user"></i></a>
                       <a href="#0" title="Logout" onclick="googleLogout()" class="icon-btn logout"><i class="lni lni-exit"></i></a>
                     </div>
@@ -571,25 +670,26 @@
       <!-- ========================= hero-5 start ========================= -->
       <div class="hero-section hero-style-5 img-bg" id="table-selection">
         <div class="container">
-          <!-- Table Status Legend (Left Aligned) -->
-          <div class="d-flex align-items-right flex-wrap justify-content-end mb-3" style="gap: 20px;">
-            <div class="d-flex align-items-center">
-              <span style="width: 15px; height: 15px; background-color: #E3E3E7; border-radius: 50%; display: inline-block; margin-right: 8px;"></span>
-              <span style="font-weight: 500;">Blank Table</span>
+          <!-- Table Status Legend -->
+          <div class="legend-container">
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #E3E3E7;"></span>
+              <span>Blank Table</span>
             </div>
-            <div class="d-flex align-items-center">
-              <span style="width: 15px; height: 15px; background-color: #D94B86; border-radius: 50%; display: inline-block; margin-right: 8px;"></span>
-              <span style="font-weight: 500;">Selected Table</span>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #D94B86;"></span>
+              <span>Selected Table</span>
             </div>
-            <div class="d-flex align-items-center">
-              <span style="width: 15px; height: 15px; background-color: #FBDA62; border-radius: 50%; display: inline-block; margin-right: 8px;"></span>
-              <span style="font-weight: 500;">Locked Table</span>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #FBDA62;"></span>
+              <span>Locked Table</span>
             </div>
-            <div class="d-flex align-items-center">
-              <span style="width: 15px; height: 15px; background-color: #28a745; border-radius: 50%; display: inline-block; margin-right: 8px;"></span>
-              <span style="font-weight: 500;">Running Table</span>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #28a745;"></span>
+              <span>Running Table</span>
             </div>
           </div>
+
 
           <!-- Table Buttons -->
           <div class="row">
@@ -744,7 +844,7 @@
             <!-- Right: Billing Summary -->
             <div class="col-md-4">
               <div class="billing-summary">
-                <div class="top-bar" style="
+                <div class="top-bar2" style="
                   display: flex;
                   align-items: center;
                   gap: 4px;
@@ -1541,7 +1641,6 @@
     <!-- ########################################################################################## -->
 
     <!-- This fetched product data table -->
-
     <script type="module">
       // ✅ Import Firebase Firestore functions
       import { 
