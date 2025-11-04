@@ -91,6 +91,7 @@
 	        transition: 0.2s ease;
 	        cursor: pointer;
 	        border-top: 5px solid transparent; /* stock indicator */
+          margin-left: 5px;
 	    }
 	
 	    .border-top-green {
@@ -456,7 +457,7 @@
             content: attr(title);
             position: absolute;
             bottom: -28px;
-            background: #372F92;
+            background: #D94B86;
             color: #fff;
             padding: 4px 8px;
             border-radius: 6px;
@@ -662,7 +663,7 @@
                     <div class="header-action d-flex align-items-center" style="gap: 15px;">
                       <a href="#0" title="Add Product" class="icon-btn add"><i class="lni lni-upload"></i></a>
                       <a href="#0" title="Delete Product" class="icon-btn delete"><i class="lni lni-trash"></i></a>
-                      <a href="product.html" title="Billing" class="icon-btn billing"><i class="lni lni-book"></i></a>
+                      <a href="product.html" title="Products" class="icon-btn billing"><i class="lni lni-book"></i></a>
                       <a href="#0" title="login" onclick="googleLogin()" class="icon-btn login"><i class="lni lni-user"></i></a>
                       <a href="#0" title="Logout" onclick="googleLogout()" class="icon-btn logout"><i class="lni lni-exit"></i></a>
                     </div>
@@ -1900,33 +1901,129 @@
 
     <!-- ########################################################################################## -->
 
-      <script>
-        async function completeOrder() {
-          const { value: formValues } = await Swal.fire({
-            title: "Customer Details",
-            html: `
-              <input id="swal-name" class="swal2-input" placeholder="Customer Name (optional)">
-              <input id="swal-phone" class="swal2-input" placeholder="Phone Number (optional)" maxlength="10">
-            `,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: "Submit",
-            cancelButtonText: "Cancel",
-            preConfirm: () => {
-              const name = document.getElementById("swal-name").value.trim();
-              const phone = document.getElementById("swal-phone").value.trim();
+      <script type="module">
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-              // ✅ Validate phone only if entered
-              if (phone && !/^[0-9]{10}$/.test(phone)) {
-                Swal.showValidationMessage("Please enter a valid 10-digit phone number");
-                return false;
+      const db = window.firebaseDB;
+
+      async function completeOrder() {
+        const { value: formValues } = await Swal.fire({
+          title: "🧾 Customer Details",
+          html: `
+            <style>
+              .swal2-product-form {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px 15px;
+                margin-top: 10px;
+                background: #f9fafc;
+                padding: 18px;
+                border-radius: 14px;
+                box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+              }
+              .swal2-product-form input[type="text"],
+              .swal2-product-form input[type="number"],
+              .swal2-product-form select {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid #d0d7de;
+                border-radius: 8px;
+                font-size: 14px;
+                background: #fff;
+                transition: all 0.25s ease;
+              }
+              .swal2-product-form input:focus,
+              .swal2-product-form select:focus {
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+                outline: none;
+              }
+              @media (max-width: 600px) {
+                .swal2-product-form {
+                  grid-template-columns: 1fr;
+                  padding: 12px;
+                }
+              }
+              .swal2-popup.custom-swal-width {
+                width: 700px !important;
+                max-width: 95%;
+                border-radius: 18px;
+                padding: 25px !important;
               }
 
-              return { name, phone };
+              .swal2-confirm {
+                background-color: #D94B86 !important;
+                border: none !important;
+                font-weight: 600 !important;
+              }
+            </style>
+
+            <div class="swal2-product-form">
+              <input id="swal-name" type="text" placeholder="Customer Name (optional)">
+              <input id="swal-phone" type="text" placeholder="Phone Number (optional)" maxlength="10">
+            </div>
+          `,
+          focusConfirm: false,
+          showCancelButton: true,
+          confirmButtonText: "💾 Submit",
+          cancelButtonText: "Cancel",
+          customClass: {
+            popup: "custom-swal-width"
+          },
+          preConfirm: () => {
+            const name = document.getElementById("swal-name").value.trim();
+            const phone = document.getElementById("swal-phone").value.trim();
+
+            if (phone && !/^[0-9]{10}$/.test(phone)) {
+              Swal.showValidationMessage("Please enter a valid 10-digit phone number");
+              return false;
+            }
+
+            return { name, phone };
+          }
+        });
+
+        if (formValues) {
+          // ✅ Collect billing data
+          const billingTable = document.querySelector(".styled-table tbody");
+          const rows = billingTable.querySelectorAll("tr");
+          const draftData = [];
+
+          rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length > 0) {
+              const productName = cells[0]?.innerText.trim() || "";
+              const quantity = cells[1]?.querySelector("input")?.value || cells[1]?.innerText.trim() || "0";
+              const total = cells[2]?.innerText.replace("₹", "").trim() || "0";
+              const freewill = cells[3]?.querySelector("input[type='checkbox']")?.checked || false;
+              const wave = cells[4]?.querySelector("select")?.value || "0";
+
+              draftData.push({
+                productName,
+                quantity: parseInt(quantity) || 0,
+                total: parseFloat(total) || 0,
+                freewill,
+                wave
+              });
             }
           });
 
-          if (formValues) {
+          const discount = document.getElementById("bill-discount")?.value || "0";
+          const roundOff = document.getElementById("round-off")?.value || "0";
+          const subtotal = document.getElementById("subtotal")?.innerText || "0";
+
+          // ✅ Save to Firestore
+          try {
+            await addDoc(collection(db, "COMPLETE_ORDER_TABLE"), {
+              customerName: formValues.name || "N/A",
+              customerPhone: formValues.phone || "N/A",
+              items: draftData,
+              discount: parseFloat(discount) || 0,
+              roundOff: parseFloat(roundOff) || 0,
+              subtotal: parseFloat(subtotal) || 0,
+              timestamp: serverTimestamp()
+            });
+
             await Swal.fire({
               icon: "success",
               title: "Order Complete ✅",
@@ -1934,17 +2031,309 @@
                 <b>Name:</b> ${formValues.name || "N/A"}<br>
                 <b>Phone:</b> ${formValues.phone || "N/A"}
               `,
-              confirmButtonText: "OK"
+              confirmButtonText: "OK",
+              customClass: { popup: "custom-swal-width" }
             });
 
+            console.log("✅ Order saved successfully to Firestore!");
             console.log("Customer Name:", formValues.name || "N/A");
             console.log("Customer Phone:", formValues.phone || "N/A");
+            console.log("Draft Data:", draftData);
 
             // ✅ Reset the bill
             resetBill();
+          } catch (error) {
+            console.error("❌ Error saving order:", error);
+            Swal.fire("Error", "Failed to save order. Please try again.", "error");
           }
         }
-        </script>
+      }
+
+      window.completeOrder = completeOrder; // expose to HTML if needed
+      </script>
+
+
+      <script type="module">
+        // ✅ Import Firestore
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Assuming Firebase is already initialized in your app
+        const db = window.firebaseDB || getFirestore();
+
+        async function addProduct() {
+          const { value: formValues } = await Swal.fire({
+            html: `
+              <style>
+                .swal2-product-form {
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 12px 15px;
+                  margin-top: 10px;
+                  background: #f9fafc;
+                  padding: 18px;
+                  border-radius: 14px;
+                  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+                }
+                .swal2-product-form input[type="text"],
+                .swal2-product-form input[type="number"],
+                .swal2-product-form input[type="file"],
+                .swal2-product-form select {
+                  width: 100%;
+                  padding: 10px 12px;
+                  border: 1px solid #d0d7de;
+                  border-radius: 8px;
+                  font-size: 14px;
+                  background: #fff;
+                  transition: all 0.25s ease;
+                }
+                .swal2-product-form input:focus,
+                .swal2-product-form select:focus {
+                  border-color: #D94B86;
+                  box-shadow: 0 0 10px #D94B86;
+                  outline: none;
+                }
+                .swal2-product-form input[type="file"] {
+                  background: #f0f4f8;
+                  cursor: pointer;
+                }
+                @media (max-width: 600px) {
+                  .swal2-product-form {
+                    grid-template-columns: 1fr;
+                    padding: 12px;
+                  }
+                }
+                .swal2-popup.custom-swal-width {
+                  width: 700px !important;
+                  max-width: 95%;
+                  border-radius: 18px;
+                  padding: 25px !important;
+                }
+
+                .swal2-confirm {
+                  background-color: #D94B86 !important;
+                  border: none !important;
+                  font-weight: 600 !important;
+                }
+                </style>
+
+              <div class="swal2-product-form">
+                <input id="prod-name" type="text" placeholder="Product Name">
+                <input id="prod-category" type="text" placeholder="Product Category">
+
+                <input id="prod-price" type="number" placeholder="Product Price (₹)" min="0">
+                <input id="prod-quantity" type="number" placeholder="Product Quantity" min="0">
+
+                <select id="swal-quantity-unit">
+                  <option value="">Select Unit</option>
+                  <option value="KG">KG</option>
+                  <option value="Pieces">Pieces</option>
+                  <option value="Liters">Liters</option>
+                </select>
+                <input id="prod-quantity-per-unit" type="number" placeholder="Quantity per Unit" min="0">
+              </div>
+            `,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: "Add Product",
+            cancelButtonText: "Cancel",
+            customClass: {
+              popup: "custom-swal-width"
+            },
+            preConfirm: async () => {
+              const name = document.getElementById("prod-name").value.trim();
+              const category = document.getElementById("prod-category").value.trim();
+              const price = document.getElementById("prod-price").value.trim();
+              const quantity = document.getElementById("prod-quantity").value.trim();
+              const unit = document.getElementById("swal-quantity-unit").value.trim();
+              const quantityPerUnit = document.getElementById("prod-quantity-per-unit").value.trim();
+
+              if (!name || !price || !quantity || !unit || !category || !quantityPerUnit) {
+                Swal.showValidationMessage("Please fill all required fields");
+                return false;
+              }
+
+              return { name, category, price, quantity, unit, quantityPerUnit };
+            }
+          });
+
+          if (formValues) {
+            console.log("🛍️ Product Details:", formValues);
+
+            // ✅ Create formatted timestamps
+            const now = new Date();
+            const formattedDate = now.toLocaleString("en-IN");
+
+            // ✅ Prepare Firestore schema object
+            const productData = {
+              BARCODE: "",
+              CREATED_AT: formattedDate,
+              IS_ACTIVE: "Deactive",
+              LAST_PURCHASE_DATE: "",
+              LAST_SOLD_DATE: "",
+              PRODUCT_CATEGORY: formValues.category || "",
+              PRODUCT_COST_PRICE: "",
+              PRODUCT_IMAGE: "https://drive.google.com/thumbnail?id=10_lbNhWVNNAdXYt6OLCxqK8rJeHzAzCS" || "",
+              PRODUCT_NAME: formValues.name,
+              PRODUCT_PRICE: formValues.price || "",
+              PRODUCT_QUANTITY: formValues.quantity || "",
+              PRODUCT_QUANTITY_PER_UNIT: formValues.quantityPerUnit || "",
+              PRODUCT_UNIT: formValues.unit || "",
+              REORDER_LEVEL: "",
+              SUPPLIER_ID: "",
+              TAX_PERCENTAGE: "",
+              UPDATED_AT: new Date().toISOString(),
+            };
+
+            try {
+              await addDoc(collection(db, "PRODUCT_DATA_TABLE"), productData);
+
+              await Swal.fire({
+                icon: "success",
+                title: "✅ Product Added to Firestore",
+                html: `
+                  <b>Activate your product from Product Page</b>
+                `
+              });
+            } catch (error) {
+              console.error("❌ Firestore Error:", error);
+              Swal.fire("Error", "Failed to add product. Check console for details.", "error");
+            }
+          }
+        }
+
+        // Convert file to Base64
+        function toBase64(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+          });
+        }
+
+        // Button click event
+        document.querySelector(".icon-btn.add").addEventListener("click", (e) => {
+          e.preventDefault();
+          addProduct();
+        });
+      </script>
+
+
+
+      <!-- SweetAlert -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script type="module">
+      import { getFirestore, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const db = window.firebaseDB || getFirestore();
+
+      // ========== DELETE PRODUCT FUNCTION ==========
+      async function deleteProduct() {
+        const { value: formValues } = await Swal.fire({
+          html: `
+            <style>
+              .swal2-product-form {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 10px;
+                background: #f9fafc;
+                padding: 18px;
+                border-radius: 14px;
+                box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+              }
+              .swal2-product-form input[type="text"] {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid #d0d7de;
+                border-radius: 8px;
+                font-size: 14px;
+                background: #fff;
+                transition: all 0.25s ease;
+              }
+              .swal2-product-form input:focus {
+                border-color: #D94B86;
+                box-shadow: 0 0 10px #D94B86;
+                outline: none;
+              }
+              @media (max-width: 600px) {
+                .swal2-product-form {
+                  grid-template-columns: 1fr;
+                  padding: 12px;
+                }
+              }
+              .swal2-popup.custom-swal-width {
+                width: 700px !important;
+                max-width: 95%;
+                border-radius: 18px;
+                padding: 25px !important;
+              }
+              .swal2-confirm {
+                background-color: #D94B86 !important;
+                border: none !important;
+                font-weight: 600 !important;
+              }
+            </style>
+
+            <div class="swal2-product-form">
+              <input id="delete-product-id" type="text" placeholder="Enter Product ID">
+            </div>
+          `,
+          focusConfirm: false,
+          showCancelButton: true,
+          confirmButtonText: "Delete Product",
+          cancelButtonText: "Cancel",
+          customClass: {
+            popup: "custom-swal-width"
+          },
+          preConfirm: () => {
+            const productId = document.getElementById("delete-product-id").value.trim();
+            if (!productId) {
+              Swal.showValidationMessage("Please enter a valid Product ID");
+              return false;
+            }
+            return { productId };
+          }
+        });
+
+        if (formValues) {
+          const productId = formValues.productId;
+          try {
+            await deleteDoc(doc(db, "PRODUCT_DATA_TABLE", productId));
+            await Swal.fire({
+              icon: "success",
+              title: "Deleted ✅",
+              text: `Product (ID: ${productId}) has been successfully deleted.`,
+              confirmButtonText: "OK"
+            });
+          } catch (error) {
+            console.error("❌ Error deleting product:", error);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Failed to delete product. Check console for details."
+            });
+          }
+        }
+      }
+
+      // ========== DELETE BUTTON EVENT ==========
+      document.querySelector(".icon-btn.delete").addEventListener("click", (e) => {
+        e.preventDefault();
+        deleteProduct();
+      });
+      </script>
+
+
+
+
+
+
+
+
+
+
 
     <!-- ########################################################################################## -->
 

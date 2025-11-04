@@ -159,7 +159,7 @@
                     <div class="header-action d-flex align-items-center" style="gap: 15px;">
                         <a href="#0" title="Add Product" class="icon-btn add"><i class="lni lni-upload"></i></a>
                         <a href="#0" title="Delete Product" class="icon-btn delete"><i class="lni lni-trash"></i></a>
-                        <a href="#0" title="Billing" class="icon-btn billing"><i class="lni lni-book"></i></a>
+                        <a href="#0" title="Products" class="icon-btn billing"><i class="lni lni-book"></i></a>
                         <a href="#0" title="Login" onclick="googleLogin()" class="icon-btn login"><i class="lni lni-user"></i></a>
                         <a href="#0" title="Logout" onclick="googleLogout()" class="icon-btn logout"><i class="lni lni-exit"></i></a>
                     </div>
@@ -200,6 +200,7 @@
             <thead class="table">
                 <tr>
                 <th>Image</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price (₹)</th>
@@ -209,6 +210,7 @@
                 <th>Barcode</th>
                 <th>Per Unit Qty</th>
                 <th>Reorder Level</th>
+                <th>TAx %</th>
                 <th></th>
                 </tr>
             </thead>
@@ -273,6 +275,9 @@
                     (prod) => `
                 <tr data-id="${prod.id}">
                     <td><img src="${prod.PRODUCT_IMAGE || ""}" alt="${prod.PRODUCT_NAME}" width="50" class="rounded shadow-sm"></td>
+                    <td class="copy-id-cell text-center" data-field="PRODUCT_ID">
+                        <i class="lni lni-clipboard copy-icon" title="Copy ID" onclick="copyToClipboard('${prod.id}')"></i>
+                    </td>
                     <td class="editable" data-field="PRODUCT_NAME">${prod.PRODUCT_NAME || "-"}</td>
                     <td class="editable" data-field="PRODUCT_CATEGORY">${prod.PRODUCT_CATEGORY || "-"}</td>
                     <td class="editable" data-field="PRODUCT_PRICE">₹${prod.PRODUCT_PRICE || "-"}</td>
@@ -282,6 +287,7 @@
                     <td class="editable" data-field="BARCODE">${prod.BARCODE || "-"}</td>
                     <td class="editable" data-field="PRODUCT_QUANTITY_PER_UNIT">${prod.PRODUCT_QUANTITY_PER_UNIT || "-"}</td>
                     <td class="editable" data-field="REORDER_LEVEL">${prod.REORDER_LEVEL || "-"}</td>
+                    <td class="editable" data-field="TAX_PERCENTAGE">${prod.TAX_PERCENTAGE || "-"}</td>
                     <td>
                         <button class="btn btn-sm btn-outline-primary fw-semibold edit-btn" data-id="${prod.id}">
                             <i class="lni lni-pencil"></i> Edit
@@ -478,9 +484,325 @@
         }
         </script>
 
+        <script>
+            function copyToClipboard(id) {
+            if (!id) return;
+
+            navigator.clipboard.writeText(id)
+                .then(() => {
+                // ✅ Feedback toast using SweetAlert2
+                Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "success",
+                    title: "Copied!",
+                    text: `Product ID: ${id}`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true
+                });
+                })
+                .catch((err) => {
+                console.error("Clipboard copy failed:", err);
+                });
+            }
+            </script>
+    
+
+    <script type="module">
+        // ✅ Import Firestore
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Assuming Firebase is already initialized in your app
+        const db = window.firebaseDB || getFirestore();
+
+        async function addProduct() {
+          const { value: formValues } = await Swal.fire({
+            html: `
+              <style>
+                .swal2-product-form {
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 12px 15px;
+                  margin-top: 10px;
+                  background: #f9fafc;
+                  padding: 18px;
+                  border-radius: 14px;
+                  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+                }
+                .swal2-product-form input[type="text"],
+                .swal2-product-form input[type="number"],
+                .swal2-product-form input[type="file"],
+                .swal2-product-form select {
+                  width: 100%;
+                  padding: 10px 12px;
+                  border: 1px solid #d0d7de;
+                  border-radius: 8px;
+                  font-size: 14px;
+                  background: #fff;
+                  transition: all 0.25s ease;
+                }
+                .swal2-product-form input:focus,
+                .swal2-product-form select:focus {
+                  border-color: #D94B86;
+                  box-shadow: 0 0 10px #D94B86;
+                  outline: none;
+                }
+                .swal2-product-form input[type="file"] {
+                  background: #f0f4f8;
+                  cursor: pointer;
+                }
+                @media (max-width: 600px) {
+                  .swal2-product-form {
+                    grid-template-columns: 1fr;
+                    padding: 12px;
+                  }
+                }
+                .swal2-popup.custom-swal-width {
+                  width: 700px !important;
+                  max-width: 95%;
+                  border-radius: 18px;
+                  padding: 25px !important;
+                }
+
+                .swal2-confirm {
+                  background-color: #D94B86 !important;
+                  border: none !important;
+                  font-weight: 600 !important;
+                }
+                </style>
+
+              <div class="swal2-product-form">
+                <input id="prod-name" type="text" placeholder="Product Name">
+                <input id="prod-category" type="text" placeholder="Product Category">
+
+                <input id="prod-price" type="number" placeholder="Product Price (₹)" min="0">
+                <input id="prod-quantity" type="number" placeholder="Product Quantity" min="0">
+
+                <select id="swal-quantity-unit">
+                  <option value="">Select Unit</option>
+                  <option value="KG">KG</option>
+                  <option value="Pieces">Pieces</option>
+                  <option value="Liters">Liters</option>
+                </select>
+                <input id="prod-quantity-per-unit" type="number" placeholder="Quantity per Unit" min="0">
+              </div>
+            `,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: "Add Product",
+            cancelButtonText: "Cancel",
+            customClass: {
+              popup: "custom-swal-width"
+            },
+            preConfirm: async () => {
+              const name = document.getElementById("prod-name").value.trim();
+              const category = document.getElementById("prod-category").value.trim();
+              const price = document.getElementById("prod-price").value.trim();
+              const quantity = document.getElementById("prod-quantity").value.trim();
+              const unit = document.getElementById("swal-quantity-unit").value.trim();
+              const quantityPerUnit = document.getElementById("prod-quantity-per-unit").value.trim();
+
+              if (!name || !price || !quantity || !unit || !category || !quantityPerUnit) {
+                Swal.showValidationMessage("Please fill all required fields");
+                return false;
+              }
+
+              return { name, category, price, quantity, unit, quantityPerUnit };
+            }
+          });
+
+          if (formValues) {
+            console.log("🛍️ Product Details:", formValues);
+
+            // ✅ Create formatted timestamps
+            const now = new Date();
+            const formattedDate = now.toLocaleString("en-IN");
+
+            // ✅ Prepare Firestore schema object
+            const productData = {
+              BARCODE: "",
+              CREATED_AT: formattedDate,
+              IS_ACTIVE: "Deactive",
+              LAST_PURCHASE_DATE: "",
+              LAST_SOLD_DATE: "",
+              PRODUCT_CATEGORY: formValues.category || "",
+              PRODUCT_COST_PRICE: "",
+              PRODUCT_IMAGE: "https://drive.google.com/thumbnail?id=10_lbNhWVNNAdXYt6OLCxqK8rJeHzAzCS" || "",
+              PRODUCT_NAME: formValues.name,
+              PRODUCT_PRICE: formValues.price || "",
+              PRODUCT_QUANTITY: formValues.quantity || "",
+              PRODUCT_QUANTITY_PER_UNIT: formValues.quantityPerUnit || "",
+              PRODUCT_UNIT: formValues.unit || "",
+              REORDER_LEVEL: "",
+              SUPPLIER_ID: "",
+              TAX_PERCENTAGE: "",
+              UPDATED_AT: new Date().toISOString(),
+            };
+
+            try {
+              await addDoc(collection(db, "PRODUCT_DATA_TABLE"), productData);
+
+              await Swal.fire({
+                icon: "success",
+                title: "✅ Product Added to Firestore",
+                html: `
+                  <b>Activate your product from Product Page</b>
+                `
+              });
+            } catch (error) {
+              console.error("❌ Firestore Error:", error);
+              Swal.fire("Error", "Failed to add product. Check console for details.", "error");
+            }
+          }
+        }
+
+        // Convert file to Base64
+        function toBase64(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+          });
+        }
+
+        // Button click event
+        document.querySelector(".icon-btn.add").addEventListener("click", (e) => {
+          e.preventDefault();
+          addProduct();
+        });
+      </script>
 
 
 
+      <!-- SweetAlert -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script type="module">
+      import { getFirestore, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const db = window.firebaseDB || getFirestore();
+
+      // ========== DELETE PRODUCT FUNCTION ==========
+      async function deleteProduct() {
+        const { value: formValues } = await Swal.fire({
+          html: `
+            <style>
+              .swal2-product-form {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 10px;
+                background: #f9fafc;
+                padding: 18px;
+                border-radius: 14px;
+                box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+              }
+              .swal2-product-form input[type="text"] {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid #d0d7de;
+                border-radius: 8px;
+                font-size: 14px;
+                background: #fff;
+                transition: all 0.25s ease;
+              }
+              .swal2-product-form input:focus {
+                border-color: #D94B86;
+                box-shadow: 0 0 10px #D94B86;
+                outline: none;
+              }
+              @media (max-width: 600px) {
+                .swal2-product-form {
+                  grid-template-columns: 1fr;
+                  padding: 12px;
+                }
+              }
+              .swal2-popup.custom-swal-width {
+                width: 700px !important;
+                max-width: 95%;
+                border-radius: 18px;
+                padding: 25px !important;
+              }
+              .swal2-confirm {
+                background-color: #D94B86 !important;
+                border: none !important;
+                font-weight: 600 !important;
+              }
+            </style>
+
+            <div class="swal2-product-form">
+              <input id="delete-product-id" type="text" placeholder="Enter Product ID">
+            </div>
+          `,
+          focusConfirm: false,
+          showCancelButton: true,
+          confirmButtonText: "Delete Product",
+          cancelButtonText: "Cancel",
+          customClass: {
+            popup: "custom-swal-width"
+          },
+          preConfirm: () => {
+            const productId = document.getElementById("delete-product-id").value.trim();
+            if (!productId) {
+              Swal.showValidationMessage("Please enter a valid Product ID");
+              return false;
+            }
+            return { productId };
+          }
+        });
+
+        if (formValues) {
+          const productId = formValues.productId;
+          try {
+            await deleteDoc(doc(db, "PRODUCT_DATA_TABLE", productId));
+            await Swal.fire({
+              icon: "success",
+              title: "Deleted ✅",
+              text: `Product (ID: ${productId}) has been successfully deleted.`,
+              confirmButtonText: "OK"
+            });
+          } catch (error) {
+            console.error("❌ Error deleting product:", error);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Failed to delete product. Check console for details."
+            });
+          }
+        }
+      }
+
+      // ========== DELETE BUTTON EVENT ==========
+      document.querySelector(".icon-btn.delete").addEventListener("click", (e) => {
+        e.preventDefault();
+        deleteProduct();
+      });
+      </script>
+
+
+
+
+
+
+    <style>
+        .copy-id-cell {
+        cursor: pointer;
+        vertical-align: middle;
+        }
+
+        .copy-icon {
+        font-size: 18px;
+        color: #555;
+        transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .copy-icon:hover {
+        color: #3b82f6;
+        transform: scale(1.15);
+        }
+        </style>
 
 
     <style>
