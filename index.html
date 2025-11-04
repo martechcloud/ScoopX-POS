@@ -10,10 +10,10 @@
 
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta1.min.css" />
-    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="assets/css/animate.css"/>
-    <link rel="stylesheet" href="assets/css/lindy-uikit.css"/>
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/lindy-uikit.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -29,7 +29,7 @@
         projectId: "scoopx-ice-cream-cafe",
         storageBucket: "scoopx-ice-cream-cafe.firebasestorage.app",
         messagingSenderId: "800499847619",
-        appId: "1:800499847619:web:8008e9016d125f924c2d76"
+        appId: "1:800499847619:web:8008e9016d125f924c2d76",
       };
 
       // ✅ Initialize Firebase App and Firestore
@@ -43,99 +43,95 @@
       console.log("🔥 Firebase (App + Firestore) initialized globally");
     </script>
 
-    
-
     <style>
-        .table-btn {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            border: 2px dashed #E3E3E7;
-            border-radius: 10px;
-            background-color: #ffffff;
-            color: #333;
-            font-weight: 500;
-            transition: 0.3s;
-            text-align: center;
-        }
-        
-        /* Responsive */
-        @media (max-width: 576px) {
+      .table-btn {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 2px dashed #e3e3e7;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #333;
+        font-weight: 500;
+        transition: 0.3s;
+        text-align: center;
+      }
 
-          .d-flex.flex-wrap {
-            justify-content: center;
-          }
-
-          .product-section .d-flex.flex-wrap {
-            justify-content: center;
-          }
-
+      /* Responsive */
+      @media (max-width: 576px) {
+        .d-flex.flex-wrap {
+          justify-content: center;
         }
 
-        .table-btn:hover {
-            background-color: #D94B86;
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(105, 108, 255, 0.3);
+        .product-section .d-flex.flex-wrap {
+          justify-content: center;
         }
+      }
 
-        .product-card {
-	        width: 160px;
-	        min-height: 120px; /* taller to fit image + name */
-	        background-color: #fff;
-	        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-	        display: flex;
-	        flex-direction: column; /* vertical layout */
-	        align-items: center;
-	        padding: 10px 5px;
-	        transition: 0.2s ease;
-	        cursor: pointer;
-	        border-top: 5px solid transparent; /* stock indicator */
-          margin-left: 5px;
-	    }
-	
-	    .border-top-green {
-	        border-top-color: #28a745;
-	    }
-	
-	    .border-top-red {
-	        border-top-color: #dc3545;
-	    }
-	
-	    .product-card:hover {
-	        transform: translateY(-3px);
-	        box-shadow: 0 4px 14px rgba(5, 8, 5, 0.15);
-	    }
-	
-	    .product-img-wrapper {
-	        width: 70px;
-	        height: 70px;
-	        overflow: hidden;
-	        border-radius: 8px;
-	        display: flex;
-	        align-items: center;
-	        justify-content: center;
-	        margin-bottom: 8px; /* spacing between image and name */
-	    }
-	
-	    .product-img {
-	        width: 100%;
-	        height: 100%;
-	        object-fit: cover;
-	    }
-	
-	    .product-name {
-	        margin: 0;
-	        font-weight: 600;
-	        color: #333;
-	        font-size: 14px;
-	        text-align: center;
-	
-	        /* allow long names to wrap */
-	        word-wrap: break-word;
-	        overflow-wrap: break-word;
-	        line-height: 1.2;
-	    }
+      .table-btn:hover {
+        background-color: #d94b86;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(105, 108, 255, 0.3);
+      }
+
+      .product-card {
+        width: 160px;
+        min-height: 120px; /* taller to fit image + name */
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column; /* vertical layout */
+        align-items: center;
+        padding: 10px 5px;
+        transition: 0.2s ease;
+        cursor: pointer;
+        border-top: 5px solid transparent; /* stock indicator */
+        margin-left: 5px;
+      }
+
+      .border-top-green {
+        border-top-color: #28a745;
+      }
+
+      .border-top-red {
+        border-top-color: #dc3545;
+      }
+
+      .product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 14px rgba(5, 8, 5, 0.15);
+      }
+
+      .product-img-wrapper {
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px; /* spacing between image and name */
+      }
+
+      .product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-name {
+        margin: 0;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+        text-align: center;
+
+        /* allow long names to wrap */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.2;
+      }
 
       @media (max-width: 576px) {
         .product-card {
@@ -143,476 +139,474 @@
         }
       }
 
-        .top-bar {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-top: 20px;
-            flex-wrap: wrap;
-        }
+      .top-bar {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding-top: 20px;
+        flex-wrap: wrap;
+      }
 
-        .top-bar .input-group {
-            width: 250px; /* Adjust the search bar width */
-        }
+      .top-bar .input-group {
+        width: 250px; /* Adjust the search bar width */
+      }
 
-        .main-content1 {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+      .main-content1 {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
 
-        .main-content1 .btn {
-            height: 35px;
-            font-size: 14px;
-        }
+      .main-content1 .btn {
+        height: 35px;
+        font-size: 14px;
+      }
 
-        .top-bar {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding-bottom: 20px;
-            flex-wrap: wrap;
-        }
+      .top-bar {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 20px;
+        flex-wrap: wrap;
+      }
 
-        /* Search bar styling */
+      /* Search bar styling */
+      .search-box {
+        width: 260px;
+        border-radius: 30px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .search-box input {
+        border: none;
+        background: #f8f9fa;
+        outline: none;
+        font-size: 14px;
+      }
+
+      .search-box .input-group-text {
+        background: #f8f9fa;
+        border: none;
+        color: #d94b86;
+        font-size: 18px;
+      }
+
+      /* 📱 Responsive Full-Width Search Bar (Mobile) */
+      @media (max-width: 767px) {
+        .top-bar .input-group,
         .search-box {
-            width: 260px;
-            border-radius: 30px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+          width: 100% !important;
+          max-width: 100%;
+          border-radius: 12px;
         }
 
-        .search-box input {
-            border: none;
-            background: #f8f9fa;
-            outline: none;
-            font-size: 14px;
+        .search-box {
+          display: flex;
+          background: #fff;
+          border: 1px solid #eee;
+          padding: 4px 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .search-box .input-group-text {
-            background: #f8f9fa;
-            border: none;
-            color: #D94B86;
-            font-size: 18px;
+          background: transparent;
+          color: #d94b86;
+          font-size: 18px;
         }
 
-        /* 📱 Responsive Full-Width Search Bar (Mobile) */
-        @media (max-width: 767px) {
-          .top-bar .input-group,
-          .search-box {
-            width: 100% !important;
-            max-width: 100%;
-            border-radius: 12px;
-          }
-
-          .search-box {
-            display: flex;
-            background: #fff;
-            border: 1px solid #eee;
-            padding: 4px 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-          }
-
-          .search-box .input-group-text {
-            background: transparent;
-            color: #D94B86;
-            font-size: 18px;
-          }
-
-          .search-box input {
-            width: 100%;
-            background: transparent;
-            font-size: 15px;
-          }
+        .search-box input {
+          width: 100%;
+          background: transparent;
+          font-size: 15px;
         }
+      }
 
-        /* Button styling */
-        .main-content1 {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+      /* Button styling */
+      .main-content1 {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-        .category-btn {
-            border: 1px solid #372F92;
-            color: #372F92;
-            background-color: #fff;
-            font-size: 8px;
-            font-weight: 500;
-            border-radius: 25px;
-            padding: 6px 18px;
-            transition: all 0.3s ease;
-        }
+      .category-btn {
+        border: 1px solid #372f92;
+        color: #372f92;
+        background-color: #fff;
+        font-size: 8px;
+        font-weight: 500;
+        border-radius: 25px;
+        padding: 6px 18px;
+        transition: all 0.3s ease;
+      }
 
-        .category-btn:hover {
-            background-color: #372F92;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(105, 108, 255, 0.3);
-        }
+      .category-btn:hover {
+        background-color: #372f92;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(105, 108, 255, 0.3);
+      }
 
-        .category-btn:focus {
-            outline: none;
-            box-shadow: 0 0 0 0.15rem rgba(105, 108, 255, 0.4);
-        }
+      .category-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.15rem rgba(105, 108, 255, 0.4);
+      }
 
-        .styled-table {
-            border-collapse: collapse;
-            width: 100%;
-            background: #fff;
-            color: #333;
-            border: 1.5px solid #D94B86;
-        }
+      .styled-table {
+        border-collapse: collapse;
+        width: 100%;
+        background: #fff;
+        color: #333;
+        border: 1.5px solid #d94b86;
+      }
 
-        /* Header styling */
-        .styled-table thead {
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            background-color: #D94B86; /* brand pink */
-            color: #fff;
-            font-size: 12px; /* slightly larger for clarity */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
+      /* Header styling */
+      .styled-table thead {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: #d94b86; /* brand pink */
+        color: #fff;
+        font-size: 12px; /* slightly larger for clarity */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
 
-        /* Table headers and cells */
-        .styled-table th,
-        .styled-table td {
-            text-align: left;
-            padding: 9px 10px; /* slightly increased for uniform spacing */
-            font-size: 12px;
-            font-weight: 500;
-            vertical-align: middle;
-            border-bottom: 1px solid #e5e7eb;
-            color: #333;
-        }
+      /* Table headers and cells */
+      .styled-table th,
+      .styled-table td {
+        text-align: left;
+        padding: 9px 10px; /* slightly increased for uniform spacing */
+        font-size: 12px;
+        font-weight: 500;
+        vertical-align: middle;
+        border-bottom: 1px solid #e5e7eb;
+        color: #333;
+      }
 
-        /* Header cells */
-        .styled-table th {
-            border-bottom: 2px solid #b32d5b;
-            background-color: #d94b86;
-            color: #fff;
-            font-weight: 600;
-            vertical-align: middle;
-        }
+      /* Header cells */
+      .styled-table th {
+        border-bottom: 2px solid #b32d5b;
+        background-color: #d94b86;
+        color: #fff;
+        font-weight: 600;
+        vertical-align: middle;
+      }
 
-        /* Scrollable body */
-        .styled-table tbody {
-            display: block;
-            max-height: 250px;
-            overflow-y: auto;
-        }
+      /* Scrollable body */
+      .styled-table tbody {
+        display: block;
+        max-height: 250px;
+        overflow-y: auto;
+      }
 
-        /* Keep table structure for column alignment */
-        .styled-table thead tr,
-        .styled-table tbody tr {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-        }
+      /* Keep table structure for column alignment */
+      .styled-table thead tr,
+      .styled-table tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
 
-        /* Hover effect for rows */
-        .styled-table tbody tr:hover {
-            background-color: #f8f9fa;
-            transition: background 0.2s ease-in-out;
-        }
+      /* Hover effect for rows */
+      .styled-table tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: background 0.2s ease-in-out;
+      }
 
-        /* Quantity controls */
-        .d-flex.align-items-center.justify-content-center.gap-2 {
-            gap: 1px !important; /* very tight spacing */
-        }
+      /* Quantity controls */
+      .d-flex.align-items-center.justify-content-center.gap-2 {
+        gap: 1px !important; /* very tight spacing */
+      }
 
-        /* Quantity buttons */
-        .qty-btn {
-            padding: 1px 6px !important;
-            font-weight: 600;
-            line-height: 1;
-            font-size: 13px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            height: 26px;
-            width: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-        }
+      /* Quantity buttons */
+      .qty-btn {
+        padding: 1px 6px !important;
+        font-weight: 600;
+        line-height: 1;
+        font-size: 13px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        height: 26px;
+        width: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+      }
 
-        /* Quantity value — invisible box, clean look */
-        .qty-value {
-            width: 28px;
-            text-align: center;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-weight: 600;
-            font-size: 13px;
-            color: #333;
-            pointer-events: none; /* prevent manual typing */
-        }
+      /* Quantity value — invisible box, clean look */
+      .qty-value {
+        width: 28px;
+        text-align: center;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-weight: 600;
+        font-size: 13px;
+        color: #333;
+        pointer-events: none; /* prevent manual typing */
+      }
 
-        /* Subtle hover effect */
-        .qty-btn:hover {
-            background-color: #f5f5f5;
-            border-color: #bbb;
-        }
+      /* Subtle hover effect */
+      .qty-btn:hover {
+        background-color: #f5f5f5;
+        border-color: #bbb;
+      }
 
-        tfoot td {
-            background: #f8f9fa;
-            padding: 8px 15px;
-        }
+      tfoot td {
+        background: #f8f9fa;
+        padding: 8px 15px;
+      }
 
-        tfoot label {
-            font-size: 14px;
-        }
+      tfoot label {
+        font-size: 14px;
+      }
 
-        tfoot select,
-        tfoot input {
-            font-size: 14px;
-        }
+      tfoot select,
+      tfoot input {
+        font-size: 14px;
+      }
 
+      .styled-table tbody {
+        display: block;
+        max-height: 262px; /* ~3 rows visible */
+        overflow-y: auto;
+        width: 100%;
+      }
 
-        .styled-table tbody {
-            display: block;
-            max-height: 262px; /* ~3 rows visible */
-            overflow-y: auto;
-            width: 100%;
-        }
+      .subtotal-box {
+        color: #d94b86; /* brand blue */
+        font-size: 1rem; /* larger font for emphasis */
+        letter-spacing: 0.5px;
+      }
 
-        .subtotal-box {
-            color: #D94B86; /* brand blue */
-            font-size: 1rem; /* larger font for emphasis */
-            letter-spacing: 0.5px;
-        }
+      .product-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        max-height: calc(
+          2 * 190px
+        ); /* assuming each card row is about 160px tall */
+        overflow-y: auto; /* only vertical scroll */
+        overflow-x: hidden;
+        padding-right: 5px;
+        scrollbar-width: thin;
+        scrollbar-color: #d94b86 #f1f1f1; /* custom scrollbar color */
+      }
 
+      /* optional - make scrollbar look modern (for webkit browsers) */
+      .product-section::-webkit-scrollbar {
+        width: 8px;
+      }
 
-        .product-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            max-height: calc(2 * 190px); /* assuming each card row is about 160px tall */
-            overflow-y: auto; /* only vertical scroll */
-            overflow-x: hidden;
-            padding-right: 5px;
-            scrollbar-width: thin;
-            scrollbar-color: #D94B86 #f1f1f1; /* custom scrollbar color */
-        }
+      .product-section::-webkit-scrollbar-thumb {
+        background-color: #d94b86;
+        border-radius: 5px;
+      }
 
-        /* optional - make scrollbar look modern (for webkit browsers) */
-        .product-section::-webkit-scrollbar {
-            width: 8px;
-        }
+      .product-section::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+      }
 
-        .product-section::-webkit-scrollbar-thumb {
-            background-color: #D94B86;
-            border-radius: 5px;
-        }
+      /* Active/Drafted Table */
+      .active-table {
+        background-color: #28a745 !important; /* Green */
+        color: white !important;
+        font-weight: 600;
+        border-color: #1e7e34 !important;
+        box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
+      }
 
-        .product-section::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-        }
+      .locked-table {
+        background-color: #fbda62 !important;
+        color: white !important;
+        font-weight: 600;
+        border-color: #fbda62 !important;
+        box-shadow: 0 0 4px rgba(235, 243, 11, 0.6);
+      }
 
-        /* Active/Drafted Table */
-        .active-table {
-            background-color: #28a745 !important; /* Green */
-            color: white !important;
-            font-weight: 600;
-            border-color: #1e7e34 !important;
-            box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
-        }
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        color: #747272;
+        text-decoration: none;
+        font-size: 18px;
+        transition: all 0.3s ease-in-out;
+        margin-right: 6px;
+      }
 
-        .locked-table {
-            background-color: #FBDA62 !important; 
-            color: white !important;
-            font-weight: 600;
-            border-color: #FBDA62 !important;
-            box-shadow: 0 0 4px rgba(235, 243, 11, 0.6);
-        }
+      /* Hover: subtle scale + color brightness */
+      .icon-btn:hover {
+        transform: scale(1.1);
+        filter: brightness(1.15);
+        color: #d94b86;
+      }
 
-        .icon-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            color: #747272;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s ease-in-out;
-            margin-right: 6px;
-            
-        }
+      /* Tooltip using title attribute */
+      .icon-btn[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -28px;
+        background: #d94b86;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0.9;
+      }
 
-        /* Hover: subtle scale + color brightness */
-        .icon-btn:hover {
-            transform: scale(1.1);
-            filter: brightness(1.15);
-            color: #D94B86;
-        }
+      /* For WebKit browsers (Chrome, Edge, Safari) */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
 
-        /* Tooltip using title attribute */
-        .icon-btn[title]:hover::after {
-            content: attr(title);
-            position: absolute;
-            bottom: -28px;
-            background: #D94B86;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0.9;
-        }
+      ::-webkit-scrollbar-track {
+        background: #d94b86;
+        border-radius: 8px;
+      }
 
-        /* For WebKit browsers (Chrome, Edge, Safari) */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
+      ::-webkit-scrollbar-thumb {
+        background: #dc4f8b;
+        border-radius: 8px;
+      }
 
-        ::-webkit-scrollbar-track {
-            background: #D94B86;
-            border-radius: 8px;
-        }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #dc4f8b;
+      }
 
-        ::-webkit-scrollbar-thumb {
-            background: #DC4F8B;
-            border-radius: 8px;
-        }
+      /* For Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #dc4f8b #f1f1f1;
+      }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #DC4F8B;
-        }
+      /* Payment type container */
+      td[colspan="5"].text-center {
+        background-color: #fafafa;
+        border-top: 2px solid #d94b86;
+        padding: 5px 0;
+        text-align: center;
+      }
 
-        /* For Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #DC4F8B #f1f1f1;
-        }
+      /* Label styling */
+      td[colspan="5"].text-center label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #333;
+        margin: 0 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
 
-        /* Payment type container */
-            td[colspan="5"].text-center {
-            background-color: #fafafa;
-            border-top: 2px solid #d94b86;
-            padding: 5px 0;
-            text-align: center;
-        }
+      /* Payment title */
+      td[colspan="5"].text-center .fw-semibold {
+        color: #d94b86;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
 
-        /* Label styling */
-            td[colspan="5"].text-center label {
-            font-size: 12px;
-            font-weight: 500;
-            color: #333;
-            margin: 0 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
+      /* Radio button custom style */
+      td[colspan="5"].text-center input[type="radio"] {
+        accent-color: #d94b86; /* Modern browsers */
+        transform: scale(1.1);
+        cursor: pointer;
+      }
 
-        /* Payment title */
-        td[colspan="5"].text-center .fw-semibold {
-            color: #d94b86;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
+      /* Hover and focus for better interactivity */
+      td[colspan="5"].text-center label:hover {
+        color: #d94b86;
+        transform: translateY(-1px);
+      }
 
-        /* Radio button custom style */
-        td[colspan="5"].text-center input[type="radio"] {
-            accent-color: #d94b86; /* Modern browsers */
-            transform: scale(1.1);
-            cursor: pointer;
-        }
+      .round-off-input::placeholder {
+        font-size: 12px;
+        color: #999;
+      }
 
-        /* Hover and focus for better interactivity */
-        td[colspan="5"].text-center label:hover {
-            color: #d94b86;
-            transform: translateY(-1px);
-        }
+      .round-off-input {
+        font-size: 12px;
+      }
 
-        .round-off-input::placeholder {
-            font-size: 12px;
-            color: #999;
-        }
+      /* Optional: Prevent Chrome from remembering old value */
+      .round-off-input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+        box-shadow: 0 0 0px 1000px white inset !important;
+      }
 
-        .round-off-input {
-            font-size: 12px;
-        }
+      /* Legend Wrapper */
+      .legend-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 1rem;
+        padding: 8px 12px;
+        position: relative;
+        z-index: 2; /* ensures it stays above background but below sticky header */
+      }
 
-        /* Optional: Prevent Chrome from remembering old value */
-        .round-off-input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-            box-shadow: 0 0 0px 1000px white inset !important;
-        }
+      /* Each Legend Item */
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #333;
+        white-space: nowrap;
+      }
 
-        /* Legend Wrapper */
+      /* Color Dot */
+      .legend-color {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* 🟣 Tablet screens */
+      @media (max-width: 768px) {
         .legend-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-end;
-          align-items: center;
-          gap: 18px;
-          margin-bottom: 1rem;
-          padding: 8px 12px;
-          position: relative;
-          z-index: 2; /* ensures it stays above background but below sticky header */
+          justify-content: center;
+          gap: 14px;
+          margin-top: 8px;
         }
 
-        /* Each Legend Item */
         .legend-item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-weight: 500;
-          font-size: 14px;
-          color: #333;
-          white-space: nowrap;
+          font-size: 13px;
+        }
+      }
+
+      /* 🩷 Mobile screens */
+      @media (max-width: 480px) {
+        .legend-container {
+          justify-content: center;
+          gap: 10px 20px;
+          row-gap: 8px;
+          margin-top: 50px; /* ✅ pushes it down below header */
+          padding-top: 6px;
         }
 
-        /* Color Dot */
-        .legend-color {
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          flex-shrink: 0;
+        .legend-item {
+          flex: 1 1 45%; /* 2 items per row */
+          justify-content: center;
+          font-size: 12px;
         }
-
-        /* 🟣 Tablet screens */
-        @media (max-width: 768px) {
-          .legend-container {
-            justify-content: center;
-            gap: 14px;
-            margin-top: 8px;
-          }
-
-          .legend-item {
-            font-size: 13px;
-          }
-        }
-
-        /* 🩷 Mobile screens */
-        @media (max-width: 480px) {
-          .legend-container {
-            justify-content: center;
-            gap: 10px 20px;
-            row-gap: 8px;
-            margin-top: 50px; /* ✅ pushes it down below header */
-            padding-top: 6px;
-          }
-
-          .legend-item {
-            flex: 1 1 45%; /* 2 items per row */
-            justify-content: center;
-            font-size: 12px;
-          }
-        }
+      }
     </style>
-
   </head>
   <body>
     <!-- ========================= preloader start ========================= -->
@@ -636,33 +630,76 @@
 
     <!-- ========================= hero-section-wrapper-5 start ========================= -->
     <section id="home" class="hero-section-wrapper-5">
-
       <!-- ========================= header-6 start ========================= -->
       <header class="header header-6">
         <div class="navbar-area">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg" style="border-bottom: 2px solid #E3E3E7;">
-                  <a class="navbar-brand" href="https://www.martechcloud.in/home">
-                    <img src="assets/img/logo/Martech Cloud Logo2.png" alt="Logo" />
+                <nav
+                  class="navbar navbar-expand-lg"
+                  style="border-bottom: 2px solid #e3e3e7"
+                >
+                  <a
+                    class="navbar-brand"
+                    href="https://www.martechcloud.in/home"
+                  >
+                    <img
+                      src="assets/img/logo/Martech Cloud Logo2.png"
+                      alt="Logo"
+                    />
                   </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent6" aria-controls="navbarSupportedContent6" aria-expanded="false" aria-label="Toggle navigation">
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent6"
+                    aria-controls="navbarSupportedContent6"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
                     <span class="toggler-icon"></span>
                     <span class="toggler-icon"></span>
                     <span class="toggler-icon"></span>
                   </button>
-  
-                  <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent6">
+
+                  <div
+                    class="collapse navbar-collapse sub-menu-bar"
+                    id="navbarSupportedContent6"
+                  >
                     <ul id="nav6" class="navbar-nav ms-auto align-items-center">
                       <li class="nav-item me-3">
                         <a class="page-scroll" href="#home">New Order</a>
                       </li>
-                      <a href="#0" title="Add Product" class="icon-btn add"><i class="lni lni-upload"></i></a>
-                      <a href="#0" title="Delete Product" class="icon-btn delete"><i class="lni lni-trash"></i></a>
-                      <a href="product.html" title="Products" class="icon-btn billing"><i class="lni lni-book"></i></a>
-                      <a href="#0" title="login" onclick="googleLogin()" class="icon-btn login"><i class="lni lni-user"></i></a>
-                      <a href="#0" title="Logout" onclick="googleLogout()" class="icon-btn logout"><i class="lni lni-exit"></i></a>
+                      <a href="#0" title="Add Product" class="icon-btn add"
+                        ><i class="lni lni-upload"></i
+                      ></a>
+                      <a
+                        href="#0"
+                        title="Delete Product"
+                        class="icon-btn delete"
+                        ><i class="lni lni-trash"></i
+                      ></a>
+                      <a
+                        href="product.html"
+                        title="Products"
+                        class="icon-btn billing"
+                        ><i class="lni lni-book"></i
+                      ></a>
+                      <a
+                        href="#0"
+                        title="login"
+                        onclick="googleLogin()"
+                        class="icon-btn login"
+                        ><i class="lni lni-user"></i
+                      ></a>
+                      <a
+                        href="#0"
+                        title="Logout"
+                        onclick="googleLogout()"
+                        class="icon-btn logout"
+                        ><i class="lni lni-exit"></i
+                      ></a>
                     </ul>
 
                     <!-- Header Action Icons -->
@@ -686,116 +723,292 @@
           <!-- Table Status Legend -->
           <div class="legend-container">
             <div class="legend-item">
-              <span class="legend-color" style="background-color: #E3E3E7;"></span>
+              <span
+                class="legend-color"
+                style="background-color: #e3e3e7"
+              ></span>
               <span>Blank Table</span>
             </div>
             <div class="legend-item">
-              <span class="legend-color" style="background-color: #D94B86;"></span>
+              <span
+                class="legend-color"
+                style="background-color: #d94b86"
+              ></span>
               <span>Selected Table</span>
             </div>
             <div class="legend-item">
-              <span class="legend-color" style="background-color: #FBDA62;"></span>
+              <span
+                class="legend-color"
+                style="background-color: #fbda62"
+              ></span>
               <span>Locked Table</span>
             </div>
             <div class="legend-item">
-              <span class="legend-color" style="background-color: #28a745;"></span>
+              <span
+                class="legend-color"
+                style="background-color: #28a745"
+              ></span>
               <span>Running Table</span>
             </div>
           </div>
 
-
           <!-- Table Buttons -->
           <div class="row">
-            <div class="d-flex flex-wrap" style="gap: 4px;">
+            <div class="d-flex flex-wrap" style="gap: 4px">
               <!-- 20 Tables -->
               <button id="table-btn-1" class="table-btn" data-table="1">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">1</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  1
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-2" class="table-btn" data-table="2">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">2</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  2
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-3" class="table-btn" data-table="3">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">3</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  3
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-4" class="table-btn" data-table="4">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">4</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  4
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-5" class="table-btn" data-table="5">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">5</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  5
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-6" class="table-btn" data-table="6">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">6</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  6
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-7" class="table-btn" data-table="7">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">7</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  7
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-8" class="table-btn" data-table="8">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">8</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  8
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-9" class="table-btn" data-table="9">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">9</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  9
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-10" class="table-btn" data-table="10">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">10</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  10
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-11" class="table-btn" data-table="11">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">11</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  11
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-12" class="table-btn" data-table="12">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">12</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  12
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-13" class="table-btn" data-table="13">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">13</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  13
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-14" class="table-btn" data-table="14">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">14</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  14
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
 
               <button id="table-btn-15" class="table-btn" data-table="15">
-                <div class="time-label" style="font-size: 12px; color: #fff;"></div>
-                <div class="table-number" style="font-size: 20px; font-weight: 600;">15</div>
-                <div class="subtotal-amount" style="font-size: 12px; color: #fff;"></div>
+                <div
+                  class="time-label"
+                  style="font-size: 12px; color: #fff"
+                ></div>
+                <div
+                  class="table-number"
+                  style="font-size: 20px; font-weight: 600"
+                >
+                  15
+                </div>
+                <div
+                  class="subtotal-amount"
+                  style="font-size: 12px; color: #fff"
+                ></div>
               </button>
             </div>
           </div>
@@ -803,7 +1016,11 @@
       </div>
 
       <!-- Order Info Section -->
-      <div class="hero-section hero-style-5 img-bg" id="order-info" style="display:none; padding: 100px 0;">
+      <div
+        class="hero-section hero-style-5 img-bg"
+        id="order-info"
+        style="display: none; padding: 100px 0"
+      >
         <div class="container">
           <div class="row g-4">
             <!-- Left: Product Cards -->
@@ -825,16 +1042,43 @@
 
                 <!-- Buttons -->
                 <div class="main-content1">
-                  <button class="btn category-btn" onclick="showItems('bulk')">Bulk</button>
-                  <button class="btn category-btn" onclick="showItems('kulfi')">Kulfi</button>
-                  <button class="btn category-btn" onclick="showItems('takeaways')">Takeaways</button>
-                  <button class="btn category-btn" onclick="showItems('cornatto')">Cornatto</button>
-                  <button class="btn category-btn" onclick="showItems('default')">Default</button>
+                  <button class="btn category-btn" onclick="showItems('bulk')">
+                    Bulk
+                  </button>
+                  <button class="btn category-btn" onclick="showItems('kulfi')">
+                    Kulfi
+                  </button>
+                  <button
+                    class="btn category-btn"
+                    onclick="showItems('takeaways')"
+                  >
+                    Takeaways
+                  </button>
+                  <button
+                    class="btn category-btn"
+                    onclick="showItems('cornatto')"
+                  >
+                    Cornatto
+                  </button>
+                  <button
+                    class="btn category-btn"
+                    onclick="showItems('default')"
+                  >
+                    Default
+                  </button>
                 </div>
               </div>
 
-              <div class="product-section" style="padding-top: 15px; padding-bottom: 15px; border-top: 2px solid #E3E3E7; border-bottom: 2px solid #E3E3E7;">
-                <div class="d-flex flex-wrap" style="gap:15px;">
+              <div
+                class="product-section"
+                style="
+                  padding-top: 15px;
+                  padding-bottom: 15px;
+                  border-top: 2px solid #e3e3e7;
+                  border-bottom: 2px solid #e3e3e7;
+                "
+              >
+                <div class="d-flex flex-wrap" style="gap: 15px">
                   <div class="product-card border-left-green">
                     <p class="product-name">Aloo Tikki Burger</p>
                   </div>
@@ -857,107 +1101,144 @@
             <!-- Right: Billing Summary -->
             <div class="col-md-4">
               <div class="billing-summary">
-                <div class="top-bar2" style="
-                  display: flex;
-                  align-items: center;
-                  gap: 4px;
-                  flex-wrap: wrap;
-                  padding-top: 20px;
-                  padding-bottom: 20px;
-                  font-size: 15px;
-                ">
-                  <button class="btn btn-outline-danger shadow-sm px-2.5 py-1 rounded-pill fw-semibold" id="reset-btn" style="font-size: 15px;">
+                <div
+                  class="top-bar2"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    flex-wrap: wrap;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                    font-size: 15px;
+                  "
+                >
+                  <button
+                    class="btn btn-outline-danger shadow-sm px-2.5 py-1 rounded-pill fw-semibold"
+                    id="reset-btn"
+                    style="font-size: 15px"
+                  >
                     <i class="lni lni-trash"></i> Reset
                   </button>
 
-                  <button class="btn btn-outline-secondary shadow-sm px-2.5 py-1 rounded-pill fw-semibold" id="draft-btn" style="font-size: 15px;">
+                  <button
+                    class="btn btn-outline-secondary shadow-sm px-2.5 py-1 rounded-pill fw-semibold"
+                    id="draft-btn"
+                    style="font-size: 15px"
+                  >
                     <i class="lni lni-save"></i> Draft
                   </button>
 
-                  <button class="btn btn-outline-success shadow-sm px-2.5 py-1 rounded-pill fw-semibold" 
-                    onclick="completeOrder()" id="completeorder-btn" style="font-size: 15px;">
+                  <button
+                    class="btn btn-outline-success shadow-sm px-2.5 py-1 rounded-pill fw-semibold"
+                    onclick="completeOrder()"
+                    id="completeorder-btn"
+                    style="font-size: 15px"
+                  >
                     <i class="lni lni-checkmark-circle"></i> Complete
                   </button>
 
-                  <button class="btn btn-outline-warning shadow-sm px-2.5 py-1 rounded-pill fw-semibold" 
-                    onclick="printbill()" id="completeorder-btn" style="font-size: 15px;">
+                  <button
+                    class="btn btn-outline-warning shadow-sm px-2.5 py-1 rounded-pill fw-semibold"
+                    onclick="printbill()"
+                    id="completeorder-btn"
+                    style="font-size: 15px"
+                  >
                     <i class="lni lni-printer"></i> Print
                   </button>
                 </div>
 
                 <table class="styled-table">
-                <thead>
+                  <thead>
                     <tr>
-                    <th>ITEM</th>
-                    <th>QTY</th>
-                    <th>TOTAL</th>
-                    <th>FREEWILL</th>
-                    <th>WAVE%</th>
+                      <th>ITEM</th>
+                      <th>QTY</th>
+                      <th>TOTAL</th>
+                      <th>FREEWILL</th>
+                      <th>WAVE%</th>
                     </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot>
+                  </thead>
+                  <tbody></tbody>
+                  <tfoot>
                     <tr>
-                    <td colspan="5" class="text-center">
+                      <td colspan="5" class="text-center">
                         <label class="fw-semibold me-2">Payment Type:</label>
-                        <label class="me-2"><input type="radio" name="paymentType" value="Cash" checked> Cash</label>
-                        <label class="me-2"><input type="radio" name="paymentType" value="UPI"> UPI</label>
-                        <label><input type="radio" name="paymentType" value="Card"> Card</label>
-                    </td>
-                    </tr>
-                    <tr style="border-bottom: 1.5px solid #D94B86;">
-                    <td colspan="5">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <select
-                          id="bill-discount"
-                          class="form-select form-select-sm text-center discount-select"
-                          style="width: 90px; font-size: 12px;"
+                        <label class="me-2"
+                          ><input
+                            type="radio"
+                            name="paymentType"
+                            value="Cash"
+                            checked
+                          />
+                          Cash</label
                         >
-                          <option value="0" >Discount %</option>
-                          <option value="5">5%</option>
-                          <option value="10">10%</option>
-                          <option value="15">15%</option>
-                          <option value="20">20%</option>
-                        </select>
-                        
-                        <!-- Round Off -->
-                        <input
-                          type="number"
-                          id="round-off"
-                          class="form-control form-control-sm text-end round-off-input"
-                          style="width: 90px;"
-                          placeholder="Round Off"
-                        />
-
-                        <div class="subtotal-box text-end fw-bold">
-                            Subtotal: ₹<span id="subtotal">0.00</span>
-                        </div>
-                        </div>
-                    </td>
+                        <label class="me-2"
+                          ><input type="radio" name="paymentType" value="UPI" />
+                          UPI</label
+                        >
+                        <label
+                          ><input
+                            type="radio"
+                            name="paymentType"
+                            value="Card"
+                          />
+                          Card</label
+                        >
+                      </td>
                     </tr>
+                    <tr style="border-bottom: 1.5px solid #d94b86">
+                      <td colspan="5">
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <select
+                            id="bill-discount"
+                            class="form-select form-select-sm text-center discount-select"
+                            style="width: 90px; font-size: 12px"
+                          >
+                            <option value="0">Discount %</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                          </select>
 
-                </tfoot>
+                          <!-- Round Off -->
+                          <input
+                            type="number"
+                            id="round-off"
+                            class="form-control form-control-sm text-end round-off-input"
+                            style="width: 90px"
+                            placeholder="Round Off"
+                          />
+
+                          <div class="subtotal-box text-end fw-bold">
+                            Subtotal: ₹<span id="subtotal">0.00</span>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
                 </table>
-                
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-
-
-
       <!-- ========================= hero-5 end ========================= -->
-
     </section>
-    
+
     <!-- ========================= footer style-4 start ========================= -->
     <footer class="footer footer-style-4">
       <div class="container">
         <div class="copyright-wrapper wow fadeInUp" data-wow-delay=".1s">
-          <p>Design and Developed by <a href="https://martechcloud.in" rel="nofollow" target="_blank">Martech Cloud</a></p>
+          <p>
+            Design and Developed by
+            <a href="https://martechcloud.in" rel="nofollow" target="_blank"
+              >Martech Cloud</a
+            >
+          </p>
         </div>
       </div>
     </footer>
@@ -966,178 +1247,185 @@
     <!-- ========================= scroll-top start ========================= -->
     <a href="#" class="scroll-top"> <i class="lni lni-chevron-up"></i> </a>
     <!-- ========================= scroll-top end ========================= -->
-		
 
     <!-- ========================= JS here ========================= -->
 
     <!-- JavaScript -->
 
-    
-
-
     <!-- ############################################################################################ -->
     <!-- This js actually fetch the data from firebare system and stored the data into globle variable for future reference -->
     <script type="module">
+      import {
+        getFirestore,
+        collection,
+        onSnapshot,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      const db = window.firebaseDB; // ✅ use global reference
 
-        import { getFirestore, collection, onSnapshot, serverTimestamp  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        const db = window.firebaseDB; // ✅ use global reference
+      // 🧠 Global array to store all saved tables
+      window.savedTables = [];
 
-        // 🧠 Global array to store all saved tables
-        window.savedTables = [];
+      // 🔥 Real-time listener for POS collection
+      const posCollection = collection(db, "POS");
 
-        // 🔥 Real-time listener for POS collection
-        const posCollection = collection(db, "POS");
+      onSnapshot(posCollection, (snapshot) => {
+        window.savedTables = []; // Clear before updating
 
-        onSnapshot(posCollection, (snapshot) => {
-            window.savedTables = []; // Clear before updating
-
-            snapshot.forEach((doc) => {
-            const data = doc.data();
-            window.savedTables.push({
-                id: doc.id,
-                ...data
-            });
-            });
-
-            console.log("📡 Real-time updated savedTables:", window.savedTables);
-            highlightActiveTables();
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          window.savedTables.push({
+            id: doc.id,
+            ...data,
+          });
         });
-        
+
+        console.log("📡 Real-time updated savedTables:", window.savedTables);
+        highlightActiveTables();
+      });
     </script>
 
     <!-- ########################################################################################### -->
 
     <!-- From the drafted orders from the globle variable it highlights the table number  -->
     <script>
-    function highlightActiveTables() {
-      const allTableButtons = document.querySelectorAll("[id^='table-btn-']");
-      const now = new Date();
+      function highlightActiveTables() {
+        const allTableButtons = document.querySelectorAll("[id^='table-btn-']");
+        const now = new Date();
 
-      allTableButtons.forEach(btn => {
-        const tableNum = btn.id.replace("table-btn-", "");
+        allTableButtons.forEach((btn) => {
+          const tableNum = btn.id.replace("table-btn-", "");
 
-        // 🔍 Find drafted data
-        const draftData = savedTables.find(t => t.tableNumber === tableNum);
+          // 🔍 Find drafted data
+          const draftData = savedTables.find((t) => t.tableNumber === tableNum);
 
-        // 🔍 Check if locked record exists in savedTables
-        const isLocked = savedTables.some(t => t.id === `table_${tableNum}_locked`);
+          // 🔍 Check if locked record exists in savedTables
+          const isLocked = savedTables.some(
+            (t) => t.id === `table_${tableNum}_locked`
+          );
 
-        // 🧠 CASE 1: Locked (but no draft)
-        if (isLocked && !draftData) {
-          btn.classList.add("locked-table");
-          btn.classList.remove("active-table");
-          btn.innerHTML = `🔒 ${tableNum}`;
-          btn.title = "Locked by another user";
-          return; // ✅ Stop further processing
-        }
-
-        // 🧠 CASE 2: Has a draft and locked
-        if (draftData && isLocked) {
-          btn.classList.add("active-table");
-          btn.classList.remove("locked-table");
-
-          // 🕒 Calculate time difference
-          const draftedTime = draftData?.draftedAt?.iso;
-          let minutesAgo = null;
-          if (draftedTime) {
-            const draftDate = new Date(draftedTime);
-            const diffMs = now - draftDate;
-            minutesAgo = Math.floor(diffMs / 60000);
+          // 🧠 CASE 1: Locked (but no draft)
+          if (isLocked && !draftData) {
+            btn.classList.add("locked-table");
+            btn.classList.remove("active-table");
+            btn.innerHTML = `🔒 ${tableNum}`;
+            btn.title = "Locked by another user";
+            return; // ✅ Stop further processing
           }
 
-          const subtotal = draftData.subtotal || "0.00";
+          // 🧠 CASE 2: Has a draft and locked
+          if (draftData && isLocked) {
+            btn.classList.add("active-table");
+            btn.classList.remove("locked-table");
 
-          // 🏷️ Time label
-          let timeDiv = btn.querySelector(".time-label");
-          if (!timeDiv) {
-            timeDiv = document.createElement("div");
-            timeDiv.className = "time-label";
-            timeDiv.style.fontSize = "13px";
-            timeDiv.style.color = "#fff";
-            timeDiv.style.fontWeight = "500";
-            btn.prepend(timeDiv);
-          }
-          timeDiv.textContent = minutesAgo !== null ? `${minutesAgo} min ago` : "";
+            // 🕒 Calculate time difference
+            const draftedTime = draftData?.draftedAt?.iso;
+            let minutesAgo = null;
+            if (draftedTime) {
+              const draftDate = new Date(draftedTime);
+              const diffMs = now - draftDate;
+              minutesAgo = Math.floor(diffMs / 60000);
+            }
 
-          // 💰 Subtotal label
-          let subtotalDiv = btn.querySelector(".subtotal-amount");
-          if (!subtotalDiv) {
-            subtotalDiv = document.createElement("div");
-            subtotalDiv.className = "subtotal-amount";
-            subtotalDiv.style.fontSize = "12px";
-            subtotalDiv.style.color = "#fff";
-            subtotalDiv.style.fontWeight = "400";
-            btn.appendChild(subtotalDiv);
-          }
-          subtotalDiv.textContent = `₹${subtotal}`;
+            const subtotal = draftData.subtotal || "0.00";
 
-          if (draftData?.draftedAt?.local) {
-            btn.title = `Drafted at: ${draftData.draftedAt.local}`;
-          }
+            // 🏷️ Time label
+            let timeDiv = btn.querySelector(".time-label");
+            if (!timeDiv) {
+              timeDiv = document.createElement("div");
+              timeDiv.className = "time-label";
+              timeDiv.style.fontSize = "13px";
+              timeDiv.style.color = "#fff";
+              timeDiv.style.fontWeight = "500";
+              btn.prepend(timeDiv);
+            }
+            timeDiv.textContent =
+              minutesAgo !== null ? `${minutesAgo} min ago` : "";
 
-          return; // ✅ Stop further processing
-        }
+            // 💰 Subtotal label
+            let subtotalDiv = btn.querySelector(".subtotal-amount");
+            if (!subtotalDiv) {
+              subtotalDiv = document.createElement("div");
+              subtotalDiv.className = "subtotal-amount";
+              subtotalDiv.style.fontSize = "12px";
+              subtotalDiv.style.color = "#fff";
+              subtotalDiv.style.fontWeight = "400";
+              btn.appendChild(subtotalDiv);
+            }
+            subtotalDiv.textContent = `₹${subtotal}`;
 
-        // 🧠 CASE 3: Has a draft (not locked)
-        if (draftData && !isLocked) {
-          btn.classList.add("active-table");
-          btn.classList.remove("locked-table");
+            if (draftData?.draftedAt?.local) {
+              btn.title = `Drafted at: ${draftData.draftedAt.local}`;
+            }
 
-          const draftedTime = draftData?.draftedAt?.iso;
-          let minutesAgo = null;
-          if (draftedTime) {
-            const draftDate = new Date(draftedTime);
-            const diffMs = now - draftDate;
-            minutesAgo = Math.floor(diffMs / 60000);
-          }
-
-          const subtotal = draftData.subtotal || "0.00";
-
-          let timeDiv = btn.querySelector(".time-label");
-          if (!timeDiv) {
-            timeDiv = document.createElement("div");
-            timeDiv.className = "time-label";
-            timeDiv.style.fontSize = "13px";
-            timeDiv.style.color = "#fff";
-            timeDiv.style.fontWeight = "500";
-            btn.prepend(timeDiv);
-          }
-          timeDiv.textContent = minutesAgo !== null ? `${minutesAgo} min ago` : "";
-
-          let subtotalDiv = btn.querySelector(".subtotal-amount");
-          if (!subtotalDiv) {
-            subtotalDiv = document.createElement("div");
-            subtotalDiv.className = "subtotal-amount";
-            subtotalDiv.style.fontSize = "12px";
-            subtotalDiv.style.color = "#fff";
-            subtotalDiv.style.fontWeight = "400";
-            btn.appendChild(subtotalDiv);
-          }
-          subtotalDiv.textContent = `₹${subtotal}`;
-
-          if (draftData?.draftedAt?.local) {
-            btn.title = `Drafted at: ${draftData.draftedAt.local}`;
+            return; // ✅ Stop further processing
           }
 
-          return;
-        }
+          // 🧠 CASE 3: Has a draft (not locked)
+          if (draftData && !isLocked) {
+            btn.classList.add("active-table");
+            btn.classList.remove("locked-table");
 
-        // 🧠 CASE 4: Neither locked nor drafted
-        btn.classList.remove("locked-table", "active-table");
-        btn.innerHTML = tableNum;
-        btn.removeAttribute("title");
-      });
-    }
+            const draftedTime = draftData?.draftedAt?.iso;
+            let minutesAgo = null;
+            if (draftedTime) {
+              const draftDate = new Date(draftedTime);
+              const diffMs = now - draftDate;
+              minutesAgo = Math.floor(diffMs / 60000);
+            }
 
-    // ⏱️ Run every 1 minute
-    setInterval(highlightActiveTables, 60000);
-  </script>
+            const subtotal = draftData.subtotal || "0.00";
+
+            let timeDiv = btn.querySelector(".time-label");
+            if (!timeDiv) {
+              timeDiv = document.createElement("div");
+              timeDiv.className = "time-label";
+              timeDiv.style.fontSize = "13px";
+              timeDiv.style.color = "#fff";
+              timeDiv.style.fontWeight = "500";
+              btn.prepend(timeDiv);
+            }
+            timeDiv.textContent =
+              minutesAgo !== null ? `${minutesAgo} min ago` : "";
+
+            let subtotalDiv = btn.querySelector(".subtotal-amount");
+            if (!subtotalDiv) {
+              subtotalDiv = document.createElement("div");
+              subtotalDiv.className = "subtotal-amount";
+              subtotalDiv.style.fontSize = "12px";
+              subtotalDiv.style.color = "#fff";
+              subtotalDiv.style.fontWeight = "400";
+              btn.appendChild(subtotalDiv);
+            }
+            subtotalDiv.textContent = `₹${subtotal}`;
+
+            if (draftData?.draftedAt?.local) {
+              btn.title = `Drafted at: ${draftData.draftedAt.local}`;
+            }
+
+            return;
+          }
+
+          // 🧠 CASE 4: Neither locked nor drafted
+          btn.classList.remove("locked-table", "active-table");
+          btn.innerHTML = tableNum;
+          btn.removeAttribute("title");
+        });
+      }
+
+      // ⏱️ Run every 1 minute
+      setInterval(highlightActiveTables, 60000);
+    </script>
 
     <!-- ########################################################################################## -->
     <!-- This locks the table at firebase  -->
 
     <script type="module">
-      import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import {
+        doc,
+        setDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
       const db = window.firebaseDB;
 
       async function _lockTable(tableNum) {
@@ -1146,7 +1434,7 @@
           await setDoc(lockDocRef, {
             locked: true,
             lockedBy: sessionStorage.getItem("userName") || "Anonymous",
-            lockedAt: serverTimestamp()
+            lockedAt: serverTimestamp(),
           });
           console.log(`🔒 Table ${tableNum} locked`);
         } catch (e) {
@@ -1163,7 +1451,10 @@
     <!-- This de-locks the table at firebase  -->
 
     <script type="module">
-      import { doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import {
+        doc,
+        deleteDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       const db = window.firebaseDB;
 
@@ -1185,7 +1476,7 @@
 
     <!-- From the drafted orders as soon as table is selected it automatically populates the billing table of drafted table  -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
         const tableSelection = document.getElementById("table-selection");
         const orderInfo = document.getElementById("order-info");
         const tableButtons = document.querySelectorAll(".table-btn");
@@ -1200,63 +1491,79 @@
 
         // 🧭 Helper: populate billing table with saved draft
         function populateBillingTable(draftData) {
-            billingTableBody.innerHTML = "";
+          billingTableBody.innerHTML = "";
 
-            draftData.products.forEach((item) => {
+          draftData.products.forEach((item) => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${item.productName}</td>
                 <td>
                 <div class="d-flex align-items-center justify-content-center gap-2">
                     <button class="btn btn-sm btn-outline-secondary qty-btn" onclick="changeQty(this, -1)">−</button>
-                    <input type="text" class="qty-value text-center" value="${parseFloat(item.quantity)}" style="width:20px;" readonly>
+                    <input type="text" class="qty-value text-center" value="${parseFloat(
+                      item.quantity
+                    )}" style="width:20px;" readonly>
                     <button class="btn btn-sm btn-outline-secondary qty-btn" onclick="changeQty(this, 1)">+</button>
                 </div>
                 </td>
                 <td class="total">₹${parseFloat(item.total).toFixed(2)}</td>
                 <td class="text-center">
-                <input type="checkbox" class="freewill-checkbox" ${item.freewill ? "checked" : ""} onchange="toggleFreewill(this)">
+                <input type="checkbox" class="freewill-checkbox" ${
+                  item.freewill ? "checked" : ""
+                } onchange="toggleFreewill(this)">
                 </td>
                 <td>
                 <select class="form-select form-select-sm wave-select" onchange="updateSubtotal()">
-                    <option value="0" ${item.wave == "0" ? "selected" : ""}>0%</option>
-                    <option value="5" ${item.wave == "5" ? "selected" : ""}>5%</option>
-                    <option value="10" ${item.wave == "10" ? "selected" : ""}>10%</option>
-                    <option value="15" ${item.wave == "15" ? "selected" : ""}>15%</option>
-                    <option value="20" ${item.wave == "20" ? "selected" : ""}>20%</option>
+                    <option value="0" ${
+                      item.wave == "0" ? "selected" : ""
+                    }>0%</option>
+                    <option value="5" ${
+                      item.wave == "5" ? "selected" : ""
+                    }>5%</option>
+                    <option value="10" ${
+                      item.wave == "10" ? "selected" : ""
+                    }>10%</option>
+                    <option value="15" ${
+                      item.wave == "15" ? "selected" : ""
+                    }>15%</option>
+                    <option value="20" ${
+                      item.wave == "20" ? "selected" : ""
+                    }>20%</option>
                 </select>
                 </td>
             `;
             billingTableBody.appendChild(row);
-            });
+          });
 
-            discountSelect.value = draftData.discount || "0";
-            roundOffInput.value = draftData.roundOff || "0";
-            subtotalEl.innerText = draftData.subtotal || "0.00";
-            updateSubtotal();
+          discountSelect.value = draftData.discount || "0";
+          roundOffInput.value = draftData.roundOff || "0";
+          subtotalEl.innerText = draftData.subtotal || "0.00";
+          updateSubtotal();
         }
 
         // ✅ Step 1: If a table was already selected earlier (session)
         const savedTable = sessionStorage.getItem("tableNumber");
         if (savedTable) {
-            const draftData = savedTables.find(t => t.tableNumber === savedTable);
-            if (draftData) {
+          const draftData = savedTables.find(
+            (t) => t.tableNumber === savedTable
+          );
+          if (draftData) {
             populateBillingTable(draftData);
             tableSelection.style.display = "none";
             orderInfo.style.display = "block";
             console.log(`✅ Loaded Firestore draft for Table ${savedTable}`);
             document.getElementById("search-bar").value = "";
             showItems("all");
-            }
+          }
 
-            if (!draftData) {
-              unlockTable(savedTable);
-            }
+          if (!draftData) {
+            unlockTable(savedTable);
+          }
         }
 
         // ✅ Step 2: When user clicks a table button
         tableButtons.forEach((button) => {
-            button.addEventListener("click", function () {
+          button.addEventListener("click", function () {
             const tableNum = this.getAttribute("data-table");
             console.log("🪑 Selected Table:", tableNum);
 
@@ -1265,18 +1572,22 @@
             lockTable(tableNum);
 
             // Try to find existing draft in Firebase (savedTables)
-            const draftData = savedTables.find(t => t.tableNumber === tableNum);
+            const draftData = savedTables.find(
+              (t) => t.tableNumber === tableNum
+            );
 
             if (draftData) {
-                populateBillingTable(draftData);
-                console.log(`✅ Loaded existing Firestore draft for Table ${tableNum}`);
+              populateBillingTable(draftData);
+              console.log(
+                `✅ Loaded existing Firestore draft for Table ${tableNum}`
+              );
             } else {
-                // No draft found → reset billing
-                billingTableBody.innerHTML = "";
-                discountSelect.value = "0";
-                roundOffInput.value = "0";
-                subtotalEl.innerText = "0.00";
-                console.log(`🆕 Starting new order for Table ${tableNum}`);
+              // No draft found → reset billing
+              billingTableBody.innerHTML = "";
+              discountSelect.value = "0";
+              roundOffInput.value = "0";
+              subtotalEl.innerText = "0.00";
+              console.log(`🆕 Starting new order for Table ${tableNum}`);
             }
 
             // Switch UI
@@ -1284,18 +1595,19 @@
             orderInfo.style.display = "block";
             document.getElementById("search-bar").value = "";
             showItems("all");
-            });
+          });
         });
-        });
+      });
     </script>
 
     <!-- ########################################################################################## -->
 
-
     <!-- As soon as click on new order button - it reverts back to front page  -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const newOrderBtn = document.querySelector('a.page-scroll[href="#home"]');
+        const newOrderBtn = document.querySelector(
+          'a.page-scroll[href="#home"]'
+        );
         const tableSelection = document.getElementById("table-selection");
         const orderInfo = document.getElementById("order-info");
 
@@ -1311,8 +1623,8 @@
 
             // Hide order-info and show table-selection
             orderInfo.style.display = "none";
-            tableSelection.style.display = "block";     
-            highlightActiveTables();   
+            tableSelection.style.display = "block";
+            highlightActiveTables();
           });
         }
       });
@@ -1323,36 +1635,39 @@
     <!-- This does the add to cart and handles all subtotal calculations  -->
 
     <script>
-        // --- Attach click listeners to product cards ---
-        function attachProductClickHandlers() {
-            const productCards = document.querySelectorAll(".product-card");
-            productCards.forEach(card => {
-            card.addEventListener("click", () => {
-                const productName = card.querySelector(".product-name").textContent.trim();
-                addProductToBilling(productName);
-            });
-            });
-        }
+      // --- Attach click listeners to product cards ---
+      function attachProductClickHandlers() {
+        const productCards = document.querySelectorAll(".product-card");
+        productCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            const productName = card
+              .querySelector(".product-name")
+              .textContent.trim();
+            addProductToBilling(productName);
+          });
+        });
+      }
 
-        // --- Add product to billing table ---
-        function addProductToBilling(productName) {
-            const products = JSON.parse(sessionStorage.getItem("products") || "[]");
-            const product = products.find(p => p.PRODUCT_NAME === productName);
-            if (!product) return;
+      // --- Add product to billing table ---
+      function addProductToBilling(productName) {
+        const products = JSON.parse(sessionStorage.getItem("products") || "[]");
+        const product = products.find((p) => p.PRODUCT_NAME === productName);
+        if (!product) return;
 
-            const tableBody = document.querySelector(".styled-table tbody");
+        const tableBody = document.querySelector(".styled-table tbody");
 
-            // Check if product already exists
-            let existingRow = Array.from(tableBody.querySelectorAll("tr"))
-            .find(row => row.children[0].textContent === productName);
+        // Check if product already exists
+        let existingRow = Array.from(tableBody.querySelectorAll("tr")).find(
+          (row) => row.children[0].textContent === productName
+        );
 
-            if (existingRow) {
-            let qtyInput = existingRow.querySelector(".qty-value");
-            qtyInput.value = parseInt(qtyInput.value) + 1;
-            updateRowTotal(existingRow, product.PRODUCT_PRICE);
-            } else {
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
+        if (existingRow) {
+          let qtyInput = existingRow.querySelector(".qty-value");
+          qtyInput.value = parseInt(qtyInput.value) + 1;
+          updateRowTotal(existingRow, product.PRODUCT_PRICE);
+        } else {
+          const newRow = document.createElement("tr");
+          newRow.innerHTML = `
                 <td>${product.PRODUCT_NAME}</td>
                 <td>
                 <div class="d-flex align-items-center justify-content-center gap-2">
@@ -1361,12 +1676,16 @@
                     <button class="btn btn-sm btn-outline-secondary qty-btn" onclick="changeQty(this, 1)">+</button>
                 </div>
                 </td>
-                <td class="total">₹${parseFloat(product.PRODUCT_PRICE).toFixed(2)}</td>
+                <td class="total">₹${parseFloat(product.PRODUCT_PRICE).toFixed(
+                  2
+                )}</td>
                 <td class="text-center">
                 <input type="checkbox" class="freewill-checkbox" onchange="toggleFreewill(this)">
                 </td>
                 <td>
-                <select class="form-select form-select-sm wave-select" onchange="updateRowTotal(this.closest('tr'), ${product.PRODUCT_PRICE})">
+                <select class="form-select form-select-sm wave-select" onchange="updateRowTotal(this.closest('tr'), ${
+                  product.PRODUCT_PRICE
+                })">
                     <option value="0">0%</option>
                     <option value="5">5%</option>
                     <option value="10">10%</option>
@@ -1375,96 +1694,109 @@
                 </select>
                 </td>
             `;
-            tableBody.appendChild(newRow);
-            }
-
-            updateSubtotal();
+          tableBody.appendChild(newRow);
         }
 
-        // --- Change quantity and update total ---
-        function changeQty(button, delta) {
-          const row = button.closest("tr");
-          const qtyInput = row.querySelector(".qty-value");
-          const basePrice = getBasePrice(row);
-          let newQty = parseInt(qtyInput.value) + delta;
+        updateSubtotal();
+      }
 
-          // Allow quantity 0 and remove product
-          if (newQty <= 0) {
-            row.remove();            // Remove the product row
-            updateSubtotal();        // Recalculate subtotal
-            return;
-          }
+      // --- Change quantity and update total ---
+      function changeQty(button, delta) {
+        const row = button.closest("tr");
+        const qtyInput = row.querySelector(".qty-value");
+        const basePrice = getBasePrice(row);
+        let newQty = parseInt(qtyInput.value) + delta;
 
-          qtyInput.value = newQty;   // Update quantity
-          updateRowTotal(row, basePrice); // Update total for that row
+        // Allow quantity 0 and remove product
+        if (newQty <= 0) {
+          row.remove(); // Remove the product row
+          updateSubtotal(); // Recalculate subtotal
+          return;
         }
 
-        // --- Toggle freewill (makes price 0) ---
-        function toggleFreewill(checkbox) {
-            const row = checkbox.closest("tr");
-            const basePrice = getBasePrice(row);
-            const qty = parseInt(row.querySelector(".qty-value").value);
+        qtyInput.value = newQty; // Update quantity
+        updateRowTotal(row, basePrice); // Update total for that row
+      }
 
-            if (checkbox.checked) {
-            row.querySelector(".total").textContent = "₹0.00";
-            } else {
-            updateRowTotal(row, basePrice);
-            }
+      // --- Toggle freewill (makes price 0) ---
+      function toggleFreewill(checkbox) {
+        const row = checkbox.closest("tr");
+        const basePrice = getBasePrice(row);
+        const qty = parseInt(row.querySelector(".qty-value").value);
 
-            updateSubtotal();
+        if (checkbox.checked) {
+          row.querySelector(".total").textContent = "₹0.00";
+        } else {
+          updateRowTotal(row, basePrice);
         }
 
-        // --- Get base price of product ---
-        function getBasePrice(row) {
-            const productName = row.children[0].textContent.trim();
-            const products = JSON.parse(sessionStorage.getItem("products") || "[]");
-            const product = products.find(p => p.PRODUCT_NAME === productName);
-            return parseFloat(product?.PRODUCT_PRICE || 0);
-        }
+        updateSubtotal();
+      }
 
-        // --- Update total per row ---
-        function updateRowTotal(row, basePrice) {
-            const qty = parseInt(row.querySelector(".qty-value").value);
-            const wave = parseFloat(row.querySelector(".wave-select").value);
-            const freewill = row.querySelector(".freewill-checkbox").checked;
+      // --- Get base price of product ---
+      function getBasePrice(row) {
+        const productName = row.children[0].textContent.trim();
+        const products = JSON.parse(sessionStorage.getItem("products") || "[]");
+        const product = products.find((p) => p.PRODUCT_NAME === productName);
+        return parseFloat(product?.PRODUCT_PRICE || 0);
+      }
 
-            let total = qty * basePrice;
-            total = total - (total * wave) / 100;
-            if (freewill) total = 0;
+      // --- Update total per row ---
+      function updateRowTotal(row, basePrice) {
+        const qty = parseInt(row.querySelector(".qty-value").value);
+        const wave = parseFloat(row.querySelector(".wave-select").value);
+        const freewill = row.querySelector(".freewill-checkbox").checked;
 
-            row.querySelector(".total").textContent = "₹" + total.toFixed(2);
-            updateSubtotal();
-        }
+        let total = qty * basePrice;
+        total = total - (total * wave) / 100;
+        if (freewill) total = 0;
 
-        // --- Calculate subtotal considering discount & round-off ---
-        function updateSubtotal() {
-            const rows = document.querySelectorAll(".styled-table tbody tr");
-            let subtotal = 0;
+        row.querySelector(".total").textContent = "₹" + total.toFixed(2);
+        updateSubtotal();
+      }
 
-            rows.forEach(row => {
-            const totalText = row.querySelector(".total").textContent.replace("₹", "");
-            subtotal += parseFloat(totalText) || 0;
-            });
+      // --- Calculate subtotal considering discount & round-off ---
+      function updateSubtotal() {
+        const rows = document.querySelectorAll(".styled-table tbody tr");
+        let subtotal = 0;
 
-            const discount = parseFloat(document.getElementById("bill-discount").value);
-            const roundOff = parseFloat(document.getElementById("round-off").value) || 0;
+        rows.forEach((row) => {
+          const totalText = row
+            .querySelector(".total")
+            .textContent.replace("₹", "");
+          subtotal += parseFloat(totalText) || 0;
+        });
 
-            subtotal = subtotal - (subtotal * discount) / 100;
-            subtotal = subtotal + roundOff;
+        const discount = parseFloat(
+          document.getElementById("bill-discount").value
+        );
+        const roundOff =
+          parseFloat(document.getElementById("round-off").value) || 0;
 
-            document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-        }
+        subtotal = subtotal - (subtotal * discount) / 100;
+        subtotal = subtotal + roundOff;
 
-        // --- Event listeners for footer elements ---
-        document.getElementById("bill-discount").addEventListener("change", updateSubtotal);
-        document.getElementById("round-off").addEventListener("input", updateSubtotal);
+        document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+      }
 
-        // --- Attach product click listeners ---
-        document.addEventListener("DOMContentLoaded", () => attachProductClickHandlers());
+      // --- Event listeners for footer elements ---
+      document
+        .getElementById("bill-discount")
+        .addEventListener("change", updateSubtotal);
+      document
+        .getElementById("round-off")
+        .addEventListener("input", updateSubtotal);
 
-        // --- Re-attach on product refresh ---
-        const observer = new MutationObserver(() => attachProductClickHandlers());
-        observer.observe(document.querySelector(".product-section .d-flex"), { childList: true });
+      // --- Attach product click listeners ---
+      document.addEventListener("DOMContentLoaded", () =>
+        attachProductClickHandlers()
+      );
+
+      // --- Re-attach on product refresh ---
+      const observer = new MutationObserver(() => attachProductClickHandlers());
+      observer.observe(document.querySelector(".product-section .d-flex"), {
+        childList: true,
+      });
     </script>
 
     <!-- ########################################################################################## -->
@@ -1472,98 +1804,109 @@
     <!-- This drafts order to the server  -->
 
     <script type="module">
-        import { 
-        getFirestore, doc, setDoc, serverTimestamp 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import {
+        getFirestore,
+        doc,
+        setDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const db = window.firebaseDB; // ✅ use global reference
-            const draftBtn = document.getElementById("draft-btn");
-            if (draftBtn) draftBtn.addEventListener("click", saveDraft);
+      document.addEventListener("DOMContentLoaded", () => {
+        const db = window.firebaseDB; // ✅ use global reference
+        const draftBtn = document.getElementById("draft-btn");
+        if (draftBtn) draftBtn.addEventListener("click", saveDraft);
 
-            async function saveDraft() {
-            const tableNumber = sessionStorage.getItem("tableNumber");
-            unlockTable(tableNumber);
-            if (!tableNumber) {
-                alert("⚠️ Table number not found. Please select a table before saving draft.");
-                return;
+        async function saveDraft() {
+          const tableNumber = sessionStorage.getItem("tableNumber");
+          unlockTable(tableNumber);
+          if (!tableNumber) {
+            alert(
+              "⚠️ Table number not found. Please select a table before saving draft."
+            );
+            return;
+          }
+
+          const billingTable = document.querySelector(".styled-table tbody");
+          if (!billingTable) {
+            alert("⚠️ Billing table not found.");
+            return;
+          }
+
+          const rows = billingTable.querySelectorAll("tr");
+          const draftData = [];
+
+          rows.forEach((row) => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length > 0) {
+              const productName = cells[0]?.innerText.trim() || "";
+              const quantity =
+                cells[1]?.querySelector("input")?.value ||
+                cells[1]?.innerText.trim() ||
+                "0";
+              const total = cells[2]?.innerText.replace("₹", "").trim() || "0";
+              const freewill =
+                cells[3]?.querySelector("input[type='checkbox']")?.checked ||
+                false;
+              const wave = cells[4]?.querySelector("select")?.value || "0";
+
+              draftData.push({
+                productName,
+                quantity: parseInt(quantity) || 0,
+                total: parseFloat(total) || 0,
+                freewill,
+                wave,
+              });
             }
+          });
 
-            const billingTable = document.querySelector(".styled-table tbody");
-            if (!billingTable) {
-                alert("⚠️ Billing table not found.");
-                return;
-            }
+          const discount =
+            document.getElementById("bill-discount")?.value || "0";
+          const roundOff = document.getElementById("round-off")?.value || "0";
+          const subtotal =
+            document.getElementById("subtotal")?.innerText || "0";
 
-            const rows = billingTable.querySelectorAll("tr");
-            const draftData = [];
+          const now = new Date();
+          const draftObject = {
+            tableNumber,
+            products: draftData,
+            discount,
+            roundOff,
+            subtotal,
+            draftedAt: {
+              iso: now.toISOString(),
+              local: now.toLocaleString(),
+            },
+            createdAt: serverTimestamp(),
+          };
 
-            rows.forEach(row => {
-                const cells = row.querySelectorAll("td");
-                if (cells.length > 0) {
-                const productName = cells[0]?.innerText.trim() || "";
-                const quantity = cells[1]?.querySelector("input")?.value || cells[1]?.innerText.trim() || "0";
-                const total = cells[2]?.innerText.replace("₹", "").trim() || "0";
-                const freewill = cells[3]?.querySelector("input[type='checkbox']")?.checked || false;
-                const wave = cells[4]?.querySelector("select")?.value || "0";
+          try {
+            // ✅ Save into your Firestore collection `POS` under the database `ScoopX Ice Cream Cafe`
+            await setDoc(doc(db, "POS", tableNumber), draftObject);
 
-                draftData.push({
-                    productName,
-                    quantity: parseInt(quantity) || 0,
-                    total: parseFloat(total) || 0,
-                    freewill,
-                    wave
-                });
-                }
+            console.log("💾 Draft saved to Firestore:", draftObject);
+
+            // ✅ SweetAlert Confirmation
+            let timerInterval;
+            Swal.fire({
+              title: "We're saving your order!",
+              html: "Your order will get saved in <b></b>.",
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                  timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+              },
+              willClose: () => clearInterval(timerInterval),
             });
-
-            const discount = document.getElementById("bill-discount")?.value || "0";
-            const roundOff = document.getElementById("round-off")?.value || "0";
-            const subtotal = document.getElementById("subtotal")?.innerText || "0";
-
-            const now = new Date();
-            const draftObject = {
-                tableNumber,
-                products: draftData,
-                discount,
-                roundOff,
-                subtotal,
-                draftedAt: {
-                iso: now.toISOString(),
-                local: now.toLocaleString()
-                },
-                createdAt: serverTimestamp()
-            };
-
-            try {
-                // ✅ Save into your Firestore collection `POS` under the database `ScoopX Ice Cream Cafe`
-                await setDoc(doc(db, "POS", tableNumber), draftObject);
-
-                console.log("💾 Draft saved to Firestore:", draftObject);
-
-                // ✅ SweetAlert Confirmation
-                let timerInterval;
-                Swal.fire({
-                title: "We're saving your order!",
-                html: "Your order will get saved in <b></b>.",
-                timer: 1500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading();
-                    const timer = Swal.getPopup().querySelector("b");
-                    timerInterval = setInterval(() => {
-                    timer.textContent = `${Swal.getTimerLeft()}`;
-                    }, 100);
-                },
-                willClose: () => clearInterval(timerInterval)
-                });
-
-            } catch (error) {
-                console.error("❌ Error saving draft:", error);
-                Swal.fire("Error", "Failed to save order. Check console.", "error");
-            }
-            }
-        });
+          } catch (error) {
+            console.error("❌ Error saving draft:", error);
+            Swal.fire("Error", "Failed to save order. Check console.", "error");
+          }
+        }
+      });
     </script>
 
     <!-- ########################################################################################## -->
@@ -1571,84 +1914,90 @@
     <!-- This reset order from the server  -->
 
     <script type="module">
-        import { 
-            getFirestore, doc, deleteDoc 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      import {
+        getFirestore,
+        doc,
+        deleteDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        const db = window.firebaseDB; // ✅ use global reference
+      const db = window.firebaseDB; // ✅ use global reference
 
-        document.getElementById("reset-btn").addEventListener("click", confirmReset);
+      document
+        .getElementById("reset-btn")
+        .addEventListener("click", confirmReset);
 
-        function confirmReset() {
-            const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: "btn btn-success",
-                cancelButton: "btn btn-danger me-2"
-            },
-            buttonsStyling: false
-            });
+      function confirmReset() {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger me-2",
+          },
+          buttonsStyling: false,
+        });
 
-            swalWithBootstrapButtons.fire({
+        swalWithBootstrapButtons
+          .fire({
             title: "Are you sure?",
             text: "This will reset the current bill!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Yes, reset it!",
             cancelButtonText: "No, cancel!",
-            reverseButtons: true
-            }).then((result) => {
+            reverseButtons: true,
+          })
+          .then((result) => {
             if (result.isConfirmed) {
-                resetBill();
-                swalWithBootstrapButtons.fire({
+              resetBill();
+              swalWithBootstrapButtons.fire({
                 title: "Reset!",
                 text: "The bill has been cleared.",
-                icon: "success"
-                });
+                icon: "success",
+              });
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-                swalWithBootstrapButtons.fire({
+              swalWithBootstrapButtons.fire({
                 title: "Cancelled",
                 text: "Your bill is safe 🙂",
-                icon: "error"
-                });
-            }
-            });
-        }
-
-        // 🔹 Reset function with Firestore delete
-        async function resetBill() {
-            const tableNumber = sessionStorage.getItem("tableNumber");
-
-            const billingTableBody = document.querySelector(".styled-table tbody");
-            billingTableBody.innerHTML = "";
-
-            document.getElementById("bill-discount").value = "0";
-            document.getElementById("round-off").value = "";
-            document.getElementById("subtotal").innerText = "0.00";
-
-            // 🔸 Remove local draft
-            if (tableNumber && sessionStorage.getItem(`draft_${tableNumber}`)) {
-            sessionStorage.removeItem(`draft_${tableNumber}`);
-            console.log(`Removed draft for Table ${tableNumber}`);
-
-            const btn = document.getElementById(`table-btn-${tableNumber}`);
-            if (btn) btn.classList.remove("active-table");
-            }
-
-            // 🔸 Delete from Firestore
-            try {
-            const docRef = doc(db, "POS", tableNumber);
-            await deleteDoc(docRef);
-            console.log(`🗑️ Firestore: Deleted draft for Table ${tableNumber}`);
-            } catch (error) {
-            console.error("❌ Error deleting Firestore document:", error);
-            Swal.fire({
                 icon: "error",
-                title: "Error",
-                text: "Failed to delete draft from database. Check console for details."
-            });
+              });
             }
+          });
+      }
+
+      // 🔹 Reset function with Firestore delete
+      async function resetBill() {
+        const tableNumber = sessionStorage.getItem("tableNumber");
+
+        const billingTableBody = document.querySelector(".styled-table tbody");
+        billingTableBody.innerHTML = "";
+
+        document.getElementById("bill-discount").value = "0";
+        document.getElementById("round-off").value = "";
+        document.getElementById("subtotal").innerText = "0.00";
+
+        // 🔸 Remove local draft
+        if (tableNumber && sessionStorage.getItem(`draft_${tableNumber}`)) {
+          sessionStorage.removeItem(`draft_${tableNumber}`);
+          console.log(`Removed draft for Table ${tableNumber}`);
+
+          const btn = document.getElementById(`table-btn-${tableNumber}`);
+          if (btn) btn.classList.remove("active-table");
         }
-        window.resetBill = resetBill;
+
+        // 🔸 Delete from Firestore
+        try {
+          const docRef = doc(db, "POS", tableNumber);
+          await deleteDoc(docRef);
+          console.log(`🗑️ Firestore: Deleted draft for Table ${tableNumber}`);
+        } catch (error) {
+          console.error("❌ Error deleting Firestore document:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Failed to delete draft from database. Check console for details.",
+          });
+        }
+      }
+      window.resetBill = resetBill;
     </script>
 
     <!-- ########################################################################################## -->
@@ -1656,10 +2005,10 @@
     <!-- This fetched product data table -->
     <script type="module">
       // ✅ Import Firebase Firestore functions
-      import { 
-        getFirestore, 
-        collection, 
-        getDocs 
+      import {
+        getFirestore,
+        collection,
+        getDocs,
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       // ✅ Use your globally initialized Firestore instance
@@ -1671,14 +2020,16 @@
       // 🟢 Fetch products once from Firestore
       async function fetchProducts() {
         try {
-          const querySnapshot = await getDocs(collection(db, "PRODUCT_DATA_TABLE"));
+          const querySnapshot = await getDocs(
+            collection(db, "PRODUCT_DATA_TABLE")
+          );
           const products = querySnapshot.docs
-            .map(doc => ({
+            .map((doc) => ({
               id: doc.id,
-              ...doc.data()
+              ...doc.data(),
             }))
             // ✅ Include only active products
-            .filter(product => product.IS_ACTIVE === "Active");
+            .filter((product) => product.IS_ACTIVE === "Active");
 
           // 🧠 Cache locally for faster reloads
           sessionStorage.setItem("products", JSON.stringify(products));
@@ -1689,13 +2040,13 @@
         }
       }
 
-
       // ✅ Create product card UI
       function createProductCard(product) {
-            const quantity = parseFloat(product.PRODUCT_QUANTITY) || 0;
-            const borderClass = quantity > 0 ? "border-top-green" : "border-top-red";
+        const quantity = parseFloat(product.PRODUCT_QUANTITY) || 0;
+        const borderClass =
+          quantity > 0 ? "border-top-green" : "border-top-red";
 
-            return `
+        return `
                 <div class="product-card ${borderClass}">
                     <div class="product-img-wrapper">
                         <img src="${product.PRODUCT_IMAGE}" alt="${product.PRODUCT_NAME}" class="product-img" />
@@ -1703,7 +2054,7 @@
                     <p class="product-name">${product.PRODUCT_NAME}</p>
                 </div>
             `;
-        }
+      }
 
       // ✅ Render products to the container
       function renderProducts(filteredProducts) {
@@ -1733,19 +2084,22 @@
 
       // ✅ Search filter
       function searchItems() {
-        const query = document.getElementById("search-bar").value.toLowerCase().trim();
+        const query = document
+          .getElementById("search-bar")
+          .value.toLowerCase()
+          .trim();
         let filtered = [...allProducts];
 
         // Filter by active category
         if (activeCategory && activeCategory !== "all") {
           filtered = filtered.filter(
-            p => p.PRODUCT_CATEGORY?.toLowerCase() === activeCategory
+            (p) => p.PRODUCT_CATEGORY?.toLowerCase() === activeCategory
           );
         }
 
         // Filter by search text
         if (query) {
-          filtered = allProducts.filter(p =>
+          filtered = allProducts.filter((p) =>
             p.PRODUCT_NAME?.toLowerCase().includes(query)
           );
         }
@@ -1758,24 +2112,27 @@
         activeCategory = category.toLowerCase();
 
         // Highlight active button
-        document.querySelectorAll(".category-btn").forEach(btn => {
+        document.querySelectorAll(".category-btn").forEach((btn) => {
           btn.classList.toggle(
             "active",
             btn.textContent.toLowerCase() === activeCategory
           );
         });
 
-        const query = document.getElementById("search-bar").value.toLowerCase().trim();
+        const query = document
+          .getElementById("search-bar")
+          .value.toLowerCase()
+          .trim();
         let filtered = [...allProducts];
 
         if (activeCategory !== "all") {
           filtered = filtered.filter(
-            p => p.PRODUCT_CATEGORY?.toLowerCase() === activeCategory
+            (p) => p.PRODUCT_CATEGORY?.toLowerCase() === activeCategory
           );
         }
 
         if (query) {
-          filtered = filtered.filter(p =>
+          filtered = filtered.filter((p) =>
             p.PRODUCT_NAME?.toLowerCase().includes(query)
           );
         }
@@ -1793,23 +2150,31 @@
 
     <!-- ########################################################################################## -->
 
-    
     <!-- This Prints the bill -->
     <script>
       function printbill() {
         const table = document.querySelector(".styled-table");
-        const subtotal = document.getElementById("subtotal")?.textContent || "0.00";
+        const subtotal =
+          document.getElementById("subtotal")?.textContent || "0.00";
         const discount = document.getElementById("bill-discount")?.value || "0";
         const roundOff = document.getElementById("round-off")?.value || "0";
-        const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || "Cash";
+        const paymentType =
+          document.querySelector('input[name="paymentType"]:checked')?.value ||
+          "Cash";
 
         const now = new Date();
         const formattedDate = now.toLocaleDateString();
-        const formattedTime = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        const selectedTable = document.querySelector(".table-btn.active")?.dataset.table || "N/A";
+        const formattedTime = now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const selectedTable =
+          document.querySelector(".table-btn.active")?.dataset.table || "N/A";
 
         const total = (
-          parseFloat(subtotal) - (subtotal * discount) / 100 + parseFloat(roundOff)
+          parseFloat(subtotal) -
+          (subtotal * discount) / 100 +
+          parseFloat(roundOff)
         ).toFixed(2);
 
         const billHTML = `
@@ -1821,9 +2186,9 @@
             margin: 0 auto;
             text-align: center;
           ">
-            <h2 style="font-size:14px;margin:5px 0;">SHOP NAME</h2>
-            <p style="margin:0;">Address: Lorem Ipsum, 23-10</p>
-            <p style="margin:0;">Telp. 11223344</p>
+            <h2 style="font-size:14px;margin:5px 0;">ScoopX Ice Cream Cafe</h2>
+            <p style="margin:0;">Address: Pali, Near Ballaleshwar Mandir</p>
+            <p style="margin:0;">Mon. 8087649190</p>
             <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
             <p><strong>CASH RECEIPT</strong></p>
             <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
@@ -1856,11 +2221,9 @@
             </div>
 
             <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
-            <p>Bank card .... 234</p>
-            <p>Approval Code #123456</p>
+            <p>Thank You!</p>
+            <p>Visit Again.</p>
             <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
-            <p>THANK YOU!</p>
-            <p style="margin-top:3px;">|||||||||||||||||</p>
           </div>
         `;
 
@@ -1900,12 +2263,19 @@
           setTimeout(() => document.body.removeChild(printFrame), 1000);
         };
       }
-      </script>
+    </script>
 
     <!-- ########################################################################################## -->
 
-      <script type="module">
-      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <!-- After complete order this saves the data to server -->
+
+    <script type="module">
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       const db = window.firebaseDB;
 
@@ -1971,19 +2341,21 @@
           confirmButtonText: "💾 Submit",
           cancelButtonText: "Cancel",
           customClass: {
-            popup: "custom-swal-width"
+            popup: "custom-swal-width",
           },
           preConfirm: () => {
             const name = document.getElementById("swal-name").value.trim();
             const phone = document.getElementById("swal-phone").value.trim();
 
             if (phone && !/^[0-9]{10}$/.test(phone)) {
-              Swal.showValidationMessage("Please enter a valid 10-digit phone number");
+              Swal.showValidationMessage(
+                "Please enter a valid 10-digit phone number"
+              );
               return false;
             }
 
             return { name, phone };
-          }
+          },
         });
 
         if (formValues) {
@@ -1992,13 +2364,18 @@
           const rows = billingTable.querySelectorAll("tr");
           const draftData = [];
 
-          rows.forEach(row => {
+          rows.forEach((row) => {
             const cells = row.querySelectorAll("td");
             if (cells.length > 0) {
               const productName = cells[0]?.innerText.trim() || "";
-              const quantity = cells[1]?.querySelector("input")?.value || cells[1]?.innerText.trim() || "0";
+              const quantity =
+                cells[1]?.querySelector("input")?.value ||
+                cells[1]?.innerText.trim() ||
+                "0";
               const total = cells[2]?.innerText.replace("₹", "").trim() || "0";
-              const freewill = cells[3]?.querySelector("input[type='checkbox']")?.checked || false;
+              const freewill =
+                cells[3]?.querySelector("input[type='checkbox']")?.checked ||
+                false;
               const wave = cells[4]?.querySelector("select")?.value || "0";
 
               draftData.push({
@@ -2006,14 +2383,16 @@
                 quantity: parseInt(quantity) || 0,
                 total: parseFloat(total) || 0,
                 freewill,
-                wave
+                wave,
               });
             }
           });
 
-          const discount = document.getElementById("bill-discount")?.value || "0";
+          const discount =
+            document.getElementById("bill-discount")?.value || "0";
           const roundOff = document.getElementById("round-off")?.value || "0";
-          const subtotal = document.getElementById("subtotal")?.innerText || "0";
+          const subtotal =
+            document.getElementById("subtotal")?.innerText || "0";
 
           // ✅ Save to Firestore
           try {
@@ -2024,7 +2403,7 @@
               discount: parseFloat(discount) || 0,
               roundOff: parseFloat(roundOff) || 0,
               subtotal: parseFloat(subtotal) || 0,
-              timestamp: serverTimestamp()
+              timestamp: serverTimestamp(),
             });
 
             await Swal.fire({
@@ -2035,7 +2414,7 @@
                 <b>Phone:</b> ${formValues.phone || "N/A"}
               `,
               confirmButtonText: "OK",
-              customClass: { popup: "custom-swal-width" }
+              customClass: { popup: "custom-swal-width" },
             });
 
             console.log("✅ Order saved successfully to Firestore!");
@@ -2047,25 +2426,37 @@
             resetBill();
           } catch (error) {
             console.error("❌ Error saving order:", error);
-            Swal.fire("Error", "Failed to save order. Please try again.", "error");
+            Swal.fire(
+              "Error",
+              "Failed to save order. Please try again.",
+              "error"
+            );
           }
         }
       }
 
       window.completeOrder = completeOrder; // expose to HTML if needed
-      </script>
+    </script>
 
+    <!-- ########################################################################################## -->
 
-      <script type="module">
-        // ✅ Import Firestore
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <!-- This add new product into product data table -->
 
-        // Assuming Firebase is already initialized in your app
-        const db = window.firebaseDB || getFirestore();
+    <script type="module">
+      // ✅ Import Firestore
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        async function addProduct() {
-          const { value: formValues } = await Swal.fire({
-            html: `
+      // Assuming Firebase is already initialized in your app
+      const db = window.firebaseDB || getFirestore();
+
+      async function addProduct() {
+        const { value: formValues } = await Swal.fire({
+          html: `
               <style>
                 .swal2-product-form {
                   display: grid;
@@ -2135,99 +2526,125 @@
                 <input id="prod-quantity-per-unit" type="number" placeholder="Quantity per Unit" min="0">
               </div>
             `,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: "Add Product",
-            cancelButtonText: "Cancel",
-            customClass: {
-              popup: "custom-swal-width"
-            },
-            preConfirm: async () => {
-              const name = document.getElementById("prod-name").value.trim();
-              const category = document.getElementById("prod-category").value.trim();
-              const price = document.getElementById("prod-price").value.trim();
-              const quantity = document.getElementById("prod-quantity").value.trim();
-              const unit = document.getElementById("swal-quantity-unit").value.trim();
-              const quantityPerUnit = document.getElementById("prod-quantity-per-unit").value.trim();
+          focusConfirm: false,
+          showCancelButton: true,
+          confirmButtonText: "Add Product",
+          cancelButtonText: "Cancel",
+          customClass: {
+            popup: "custom-swal-width",
+          },
+          preConfirm: async () => {
+            const name = document.getElementById("prod-name").value.trim();
+            const category = document
+              .getElementById("prod-category")
+              .value.trim();
+            const price = document.getElementById("prod-price").value.trim();
+            const quantity = document
+              .getElementById("prod-quantity")
+              .value.trim();
+            const unit = document
+              .getElementById("swal-quantity-unit")
+              .value.trim();
+            const quantityPerUnit = document
+              .getElementById("prod-quantity-per-unit")
+              .value.trim();
 
-              if (!name || !price || !quantity || !unit || !category || !quantityPerUnit) {
-                Swal.showValidationMessage("Please fill all required fields");
-                return false;
-              }
-
-              return { name, category, price, quantity, unit, quantityPerUnit };
+            if (
+              !name ||
+              !price ||
+              !quantity ||
+              !unit ||
+              !category ||
+              !quantityPerUnit
+            ) {
+              Swal.showValidationMessage("Please fill all required fields");
+              return false;
             }
-          });
 
-          if (formValues) {
-            console.log("🛍️ Product Details:", formValues);
+            return { name, category, price, quantity, unit, quantityPerUnit };
+          },
+        });
 
-            // ✅ Create formatted timestamps
-            const now = new Date();
-            const formattedDate = now.toLocaleString("en-IN");
+        if (formValues) {
+          console.log("🛍️ Product Details:", formValues);
 
-            // ✅ Prepare Firestore schema object
-            const productData = {
-              BARCODE: "",
-              CREATED_AT: formattedDate,
-              IS_ACTIVE: "Deactive",
-              LAST_PURCHASE_DATE: "",
-              LAST_SOLD_DATE: "",
-              PRODUCT_CATEGORY: formValues.category || "",
-              PRODUCT_COST_PRICE: "",
-              PRODUCT_IMAGE: "https://drive.google.com/thumbnail?id=10_lbNhWVNNAdXYt6OLCxqK8rJeHzAzCS" || "",
-              PRODUCT_NAME: formValues.name,
-              PRODUCT_PRICE: formValues.price || "",
-              PRODUCT_QUANTITY: formValues.quantity || "",
-              PRODUCT_QUANTITY_PER_UNIT: formValues.quantityPerUnit || "",
-              PRODUCT_UNIT: formValues.unit || "",
-              REORDER_LEVEL: "",
-              SUPPLIER_ID: "",
-              TAX_PERCENTAGE: "",
-              UPDATED_AT: new Date().toISOString(),
-            };
+          // ✅ Create formatted timestamps
+          const now = new Date();
+          const formattedDate = now.toLocaleString("en-IN");
 
-            try {
-              await addDoc(collection(db, "PRODUCT_DATA_TABLE"), productData);
+          // ✅ Prepare Firestore schema object
+          const productData = {
+            BARCODE: "",
+            CREATED_AT: formattedDate,
+            IS_ACTIVE: "Deactive",
+            LAST_PURCHASE_DATE: "",
+            LAST_SOLD_DATE: "",
+            PRODUCT_CATEGORY: formValues.category || "",
+            PRODUCT_COST_PRICE: "",
+            PRODUCT_IMAGE:
+              "https://drive.google.com/thumbnail?id=10_lbNhWVNNAdXYt6OLCxqK8rJeHzAzCS" ||
+              "",
+            PRODUCT_NAME: formValues.name,
+            PRODUCT_PRICE: formValues.price || "",
+            PRODUCT_QUANTITY: formValues.quantity || "",
+            PRODUCT_QUANTITY_PER_UNIT: formValues.quantityPerUnit || "",
+            PRODUCT_UNIT: formValues.unit || "",
+            REORDER_LEVEL: "",
+            SUPPLIER_ID: "",
+            TAX_PERCENTAGE: "",
+            UPDATED_AT: new Date().toISOString(),
+          };
 
-              await Swal.fire({
-                icon: "success",
-                title: "✅ Product Added to Firestore",
-                html: `
+          try {
+            await addDoc(collection(db, "PRODUCT_DATA_TABLE"), productData);
+
+            await Swal.fire({
+              icon: "success",
+              title: "✅ Product Added to Firestore",
+              html: `
                   <b>Activate your product from Product Page</b>
-                `
-              });
-            } catch (error) {
-              console.error("❌ Firestore Error:", error);
-              Swal.fire("Error", "Failed to add product. Check console for details.", "error");
-            }
+                `,
+            });
+          } catch (error) {
+            console.error("❌ Firestore Error:", error);
+            Swal.fire(
+              "Error",
+              "Failed to add product. Check console for details.",
+              "error"
+            );
           }
         }
+      }
 
-        // Convert file to Base64
-        function toBase64(file) {
-          return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-          });
-        }
-
-        // Button click event
-        document.querySelector(".icon-btn.add").addEventListener("click", (e) => {
-          e.preventDefault();
-          addProduct();
+      // Convert file to Base64
+      function toBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
         });
-      </script>
+      }
 
+      // Button click event
+      document.querySelector(".icon-btn.add").addEventListener("click", (e) => {
+        e.preventDefault();
+        addProduct();
+      });
+    </script>
 
+    <!-- ########################################################################################## -->
 
-      <!-- SweetAlert -->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- This deletes the product on request from product data table -->
 
-      <script type="module">
-      import { getFirestore, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module">
+      import {
+        getFirestore,
+        doc,
+        deleteDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       const db = window.firebaseDB || getFirestore();
 
@@ -2288,16 +2705,18 @@
           confirmButtonText: "Delete Product",
           cancelButtonText: "Cancel",
           customClass: {
-            popup: "custom-swal-width"
+            popup: "custom-swal-width",
           },
           preConfirm: () => {
-            const productId = document.getElementById("delete-product-id").value.trim();
+            const productId = document
+              .getElementById("delete-product-id")
+              .value.trim();
             if (!productId) {
               Swal.showValidationMessage("Please enter a valid Product ID");
               return false;
             }
             return { productId };
-          }
+          },
         });
 
         if (formValues) {
@@ -2308,38 +2727,29 @@
               icon: "success",
               title: "Deleted ✅",
               text: `Product (ID: ${productId}) has been successfully deleted.`,
-              confirmButtonText: "OK"
+              confirmButtonText: "OK",
             });
           } catch (error) {
             console.error("❌ Error deleting product:", error);
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: "Failed to delete product. Check console for details."
+              text: "Failed to delete product. Check console for details.",
             });
           }
         }
       }
 
       // ========== DELETE BUTTON EVENT ==========
-      document.querySelector(".icon-btn.delete").addEventListener("click", (e) => {
-        e.preventDefault();
-        deleteProduct();
-      });
-      </script>
-
-
-
-
-
-
-
-
-
-
+      document
+        .querySelector(".icon-btn.delete")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          deleteProduct();
+        });
+    </script>
 
     <!-- ########################################################################################## -->
-
 
     <script src="assets/js/bootstrap-5.0.0-beta1.min.js"></script>
     <script src="assets/js/tiny-slider.js"></script>
