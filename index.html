@@ -438,7 +438,7 @@
             justify-content: center;
             width: 38px;
             height: 38px;
-            color: #fff;
+            color: #747272;
             text-decoration: none;
             font-size: 18px;
             transition: all 0.3s ease-in-out;
@@ -450,6 +450,7 @@
         .icon-btn:hover {
             transform: scale(1.1);
             filter: brightness(1.15);
+            color: #D94B86;
         }
 
         /* Tooltip using title attribute */
@@ -657,16 +658,14 @@
                       <li class="nav-item me-3">
                         <a class="page-scroll" href="#home">New Order</a>
                       </li>
-                    </ul>
-
-                    <!-- Header Action Icons -->
-                    <div class="header-action d-flex align-items-center" style="gap: 15px;">
                       <a href="#0" title="Add Product" class="icon-btn add"><i class="lni lni-upload"></i></a>
                       <a href="#0" title="Delete Product" class="icon-btn delete"><i class="lni lni-trash"></i></a>
                       <a href="product.html" title="Products" class="icon-btn billing"><i class="lni lni-book"></i></a>
                       <a href="#0" title="login" onclick="googleLogin()" class="icon-btn login"><i class="lni lni-user"></i></a>
                       <a href="#0" title="Logout" onclick="googleLogout()" class="icon-btn logout"><i class="lni lni-exit"></i></a>
-                    </div>
+                    </ul>
+
+                    <!-- Header Action Icons -->
                   </div>
                   <!-- navbar collapse -->
                 </nav>
@@ -1673,10 +1672,13 @@
       async function fetchProducts() {
         try {
           const querySnapshot = await getDocs(collection(db, "PRODUCT_DATA_TABLE"));
-          const products = querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }));
+          const products = querySnapshot.docs
+            .map(doc => ({
+              id: doc.id,
+              ...doc.data()
+            }))
+            // ✅ Include only active products
+            .filter(product => product.IS_ACTIVE === "Active");
 
           // 🧠 Cache locally for faster reloads
           sessionStorage.setItem("products", JSON.stringify(products));
@@ -1686,6 +1688,7 @@
           return [];
         }
       }
+
 
       // ✅ Create product card UI
       function createProductCard(product) {
