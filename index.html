@@ -2008,7 +2008,7 @@
       import {
         getFirestore,
         collection,
-        getDocs,
+        onSnapshot,
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       // ✅ Use your globally initialized Firestore instance
@@ -2017,28 +2017,36 @@
       let allProducts = []; // All products loaded
       let activeCategory = ""; // Currently selected category
 
-      // 🟢 Fetch products once from Firestore
-      async function fetchProducts() {
+      // 🟢 Listen to real-time updates from Firestore
+      function listenToProducts() {
         try {
-          const querySnapshot = await getDocs(
-            collection(db, "PRODUCT_DATA_TABLE")
-          );
-          const products = querySnapshot.docs
-            .map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }))
-            // ✅ Include only active products
-            .filter((product) => product.IS_ACTIVE === "Active");
+          const colRef = collection(db, "PRODUCT_DATA_TABLE");
 
-          // 🧠 Cache locally for faster reloads
-          sessionStorage.setItem("products", JSON.stringify(products));
-          return products;
+          // 👂 Listen for changes in real-time
+          onSnapshot(colRef, (snapshot) => {
+            const products = snapshot.docs
+              .map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }))
+              // ✅ Include only active products
+              .filter((product) => product.IS_ACTIVE === "Active");
+
+            // 🧠 Cache locally for faster reloads
+            sessionStorage.setItem("products", JSON.stringify(products));
+
+            // 🔁 Update global variable
+            allProducts = products;
+
+            console.log("✅ Real-time products updated:", products);
+          });
         } catch (err) {
-          console.error("🔥 Error fetching products from Firestore:", err);
-          return [];
+          console.error("🔥 Error listening to products from Firestore:", err);
         }
       }
+
+      // 🚀 Start listening immediately
+      listenToProducts();
 
       // ✅ Create product card UI
       function createProductCard(product) {
