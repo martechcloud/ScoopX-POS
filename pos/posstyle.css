@@ -1,0 +1,560 @@
+.table-btn {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 2px dashed #e3e3e7;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .d-flex.flex-wrap {
+    justify-content: center;
+  }
+
+  .product-section .d-flex.flex-wrap {
+    justify-content: center;
+  }
+}
+
+.table-btn:hover {
+  background-color: #d94b86;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(105, 108, 255, 0.3);
+}
+
+.product-card {
+  width: 160px;
+  min-height: 120px; /* taller to fit image + name */
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* vertical layout */
+  align-items: center;
+  padding: 10px 5px;
+  transition: 0.2s ease;
+  cursor: pointer;
+  border-top: 5px solid transparent; /* stock indicator */
+  margin-left: 5px;
+}
+
+.border-top-green {
+  border-top-color: #28a745;
+}
+
+.border-top-red {
+  border-top-color: #dc3545;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(5, 8, 5, 0.15);
+}
+
+.product-img-wrapper {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px; /* spacing between image and name */
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name {
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+
+  /* allow long names to wrap */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+}
+
+@media (max-width: 576px) {
+  .product-card {
+    width: 40%; /* ensures 2 cards per row on mobile */
+  }
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.top-bar .input-group {
+  width: 250px; /* Adjust the search bar width */
+}
+
+.main-content1 {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.main-content1 .btn {
+  height: 35px;
+  font-size: 14px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Search bar styling */
+.search-box {
+  width: 260px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-box input {
+  border: none;
+  background: #f8f9fa;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box .input-group-text {
+  background: #f8f9fa;
+  border: none;
+  color: #d94b86;
+  font-size: 18px;
+}
+
+/* 📱 Responsive Full-Width Search Bar (Mobile) */
+@media (max-width: 767px) {
+  .top-bar .input-group,
+  .search-box {
+    width: 100% !important;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .search-box {
+    display: flex;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .search-box .input-group-text {
+    background: transparent;
+    color: #d94b86;
+    font-size: 18px;
+  }
+
+  .search-box input {
+    width: 100%;
+    background: transparent;
+    font-size: 15px;
+  }
+}
+
+/* Button styling */
+.main-content1 {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  border: 1px solid #372f92;
+  color: #372f92;
+  background-color: #fff;
+  font-size: 8px;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 6px 18px;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  background-color: #372f92;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(105, 108, 255, 0.3);
+}
+
+.category-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.15rem rgba(105, 108, 255, 0.4);
+}
+
+.styled-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  color: #333;
+  border: 1.5px solid #d94b86;
+}
+
+/* Header styling */
+.styled-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #d94b86; /* brand pink */
+  color: #fff;
+  font-size: 12px; /* slightly larger for clarity */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Table headers and cells */
+.styled-table th,
+.styled-table td {
+  text-align: left;
+  padding: 9px 10px; /* slightly increased for uniform spacing */
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: middle;
+  border-bottom: 1px solid #e5e7eb;
+  color: #333;
+}
+
+/* Header cells */
+.styled-table th {
+  border-bottom: 2px solid #b32d5b;
+  background-color: #d94b86;
+  color: #fff;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* Scrollable body */
+.styled-table tbody {
+  display: block;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* Keep table structure for column alignment */
+.styled-table thead tr,
+.styled-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Hover effect for rows */
+.styled-table tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Quantity controls */
+.d-flex.align-items-center.justify-content-center.gap-2 {
+  gap: 1px !important; /* very tight spacing */
+}
+
+/* Quantity buttons */
+.qty-btn {
+  padding: 1px 6px !important;
+  font-weight: 600;
+  line-height: 1;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 26px;
+  width: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* Quantity value — invisible box, clean look */
+.qty-value {
+  width: 28px;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+  pointer-events: none; /* prevent manual typing */
+}
+
+/* Subtle hover effect */
+.qty-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #bbb;
+}
+
+tfoot td {
+  background: #f8f9fa;
+  padding: 8px 15px;
+}
+
+tfoot label {
+  font-size: 14px;
+}
+
+tfoot select,
+tfoot input {
+  font-size: 14px;
+}
+
+.styled-table tbody {
+  display: block;
+  max-height: 262px; /* ~3 rows visible */
+  overflow-y: auto;
+  width: 100%;
+}
+
+.subtotal-box {
+  color: #d94b86; /* brand blue */
+  font-size: 1rem; /* larger font for emphasis */
+  letter-spacing: 0.5px;
+}
+
+.product-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-height: calc(2 * 190px); /* assuming each card row is about 160px tall */
+  overflow-y: auto; /* only vertical scroll */
+  overflow-x: hidden;
+  padding-right: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #d94b86 #f1f1f1; /* custom scrollbar color */
+}
+
+/* optional - make scrollbar look modern (for webkit browsers) */
+.product-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.product-section::-webkit-scrollbar-thumb {
+  background-color: #d94b86;
+  border-radius: 5px;
+}
+
+.product-section::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Active/Drafted Table */
+.active-table {
+  background-color: #28a745 !important; /* Green */
+  color: white !important;
+  font-weight: 600;
+  border-color: #1e7e34 !important;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
+}
+
+.locked-table {
+  background-color: #fbda62 !important;
+  color: white !important;
+  font-weight: 600;
+  border-color: #fbda62 !important;
+  box-shadow: 0 0 4px rgba(235, 243, 11, 0.6);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: #747272;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 6px;
+}
+
+/* Hover: subtle scale + color brightness */
+.icon-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+  color: #d94b86;
+}
+
+/* Tooltip using title attribute */
+.icon-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -28px;
+  background: #d94b86;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d94b86;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dc4f8b;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc4f8b;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #dc4f8b #f1f1f1;
+}
+
+/* Payment type container */
+td[colspan="5"].text-center {
+  background-color: #fafafa;
+  border-top: 2px solid #d94b86;
+  padding: 5px 0;
+  text-align: center;
+}
+
+/* Label styling */
+td[colspan="5"].text-center label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Payment title */
+td[colspan="5"].text-center .fw-semibold {
+  color: #d94b86;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Radio button custom style */
+td[colspan="5"].text-center input[type="radio"] {
+  accent-color: #d94b86; /* Modern browsers */
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Hover and focus for better interactivity */
+td[colspan="5"].text-center label:hover {
+  color: #d94b86;
+  transform: translateY(-1px);
+}
+
+.round-off-input::placeholder {
+  font-size: 12px;
+  color: #999;
+}
+
+.round-off-input {
+  font-size: 12px;
+}
+
+/* Optional: Prevent Chrome from remembering old value */
+.round-off-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* Legend Wrapper */
+.legend-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  position: relative;
+  z-index: 2; /* ensures it stays above background but below sticky header */
+}
+
+/* Each Legend Item */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* Color Dot */
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* 🟣 Tablet screens */
+@media (max-width: 768px) {
+  .legend-container {
+    justify-content: center;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .legend-item {
+    font-size: 13px;
+  }
+}
+
+/* 🩷 Mobile screens */
+@media (max-width: 480px) {
+  .legend-container {
+    justify-content: center;
+    gap: 10px 20px;
+    row-gap: 8px;
+    margin-top: 50px; /* ✅ pushes it down below header */
+    padding-top: 6px;
+  }
+
+  .legend-item {
+    flex: 1 1 45%; /* 2 items per row */
+    justify-content: center;
+    font-size: 12px;
+  }
+}
