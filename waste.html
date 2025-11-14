@@ -17,7 +17,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="inventory/inventorystyle.css" />
+    <link rel="stylesheet" href="wastelogs/wastelogosstyle.css" />
 
     <!-- Setting up the serverside connection -->
     <script type="module" src="setup.js"></script>
@@ -85,45 +85,16 @@
                       <li class="nav-item me-3">
                         <a class="page-scroll" href="index.html">New Order</a>
                       </li>
-                      <div class="action-dropdown">
-                        <a href="#0" title="Action" class="icon-btn action-btn"
-                          ><i class="lni lni-cog"></i
-                        ></a>
-
-                        <div class="dropdown-menu">
-                          <a
-                            href="#0"
-                            title="Add Product"
-                            class="add-product-btn"
-                            ><i class="lni lni-upload"></i> Add Product</a
-                          >
-                          <a
-                            href="#0"
-                            title="Delete Product"
-                            class="delete-product-btn"
-                            ><i class="lni lni-trash"></i> Delete Product</a
-                          >
-                          <a href="purchase.html" title="Purchase Logs"
-                            ><i class="lni lni-agenda"></i> Purchase Logs</a
-                          >
-                          <a href="waste.html" title="Wastage Logs"
-                            ><i class="lni lni-trash"></i> Wastage Logs</a
-                          >
-                          <a href="supplier.html" title="Add Supplier"
-                            ><i class="lni lni-users"></i> Add Supplier</a
-                          >
-                          <a href="recipe.html" title="Add Recipe"
-                            ><i class="lni lni-book"></i> Add Recipe</a
-                          >
-                        </div>
-                        <a
-                          href="#0"
-                          title="Logout"
-                          onclick="googleLogout()"
-                          class="icon-btn logout"
-                          ><i class="lni lni-exit"></i
-                        ></a>
-                      </div>
+                      <li class="nav-item me-3">
+                        <a class="page-scroll" href="product.html">Inventory</a>
+                      </li>
+                      <a
+                        href="#0"
+                        title="Logout"
+                        onclick="googleLogout()"
+                        class="icon-btn logout"
+                        ><i class="lni lni-exit"></i
+                      ></a>
                     </ul>
 
                     <!-- Header Action Icons -->
@@ -147,49 +118,92 @@
         class="container"
         style="padding-top: 100px; padding-bottom: 50px"
       >
-        <div class="search-box-wrapper mb-3">
-          <div class="search-box input-group">
-            <span class="input-group-text bg-light border-end-0">
-              <i class="lni lni-search"></i>
-            </span>
-            <input
-              type="text"
-              id="tableSearch"
-              class="form-control border-start-0 shadow-none"
-              placeholder="Search products..."
-              onkeyup="filterTable()"
-            />
-          </div>
-        </div>
-        <div class="table-responsive">
-          <table
-            id="productTable"
-            class="table table-bordered align-middle text-left"
-          >
-            <thead class="table">
-              <tr>
-                <th>Image</th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price (₹)</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Status</th>
-                <th>INV Category</th>
-                <th>Reorder Level</th>
-                <th>TAx %</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="productTableBody">
-              <tr>
-                <td colspan="12" class="text-muted">Loading products...</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- 🔹 Wastage Logs -->
+        <div class="form-container">
+          <h6>Wastage Logs</h6>
+          &nbsp;
+
+          <form class="po-form" id="poForm">
+            <!-- Record ID -->
+            <div class="input-group">
+              <label for="po-id">Record ID</label>
+              <input id="po-id" type="text" placeholder="WST-XXXXXX" disabled />
+            </div>
+
+            <!-- Product ID -->
+            <div class="input-group">
+              <label>Product ID</label>
+              <div class="dropdown-container3">
+                <input
+                  type="text"
+                  class="productSearch3"
+                  placeholder="Search Product"
+                  autocomplete="off"
+                />
+                <div class="dropdown-list3"></div>
+              </div>
+            </div>
+
+            <!-- Product Name -->
+            <div class="input-group">
+              <label for="supplierSearch">Product Name</label>
+              <div class="dropdown-container1">
+                <input
+                  type="text"
+                  id="supplierSearch"
+                  placeholder="Product Name"
+                  autocomplete="off"
+                  disabled
+                />
+                <div id="dropdownListsupplier" class="dropdown-list"></div>
+              </div>
+            </div>
+
+            <!-- Quantity Lost -->
+            <div class="input-group">
+              <label>Quantity Lost</label>
+              <div class="quantity-wrapper">
+                <input
+                  class="quantityValue"
+                  type="number"
+                  step="0.01"
+                  placeholder="Enter Quantity"
+                  required
+                />
+                <input
+                  class="quantityUnit"
+                  id="quantityUnit"
+                  type="text"
+                  placeholder="Unit"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- Reason -->
+            <div class="input-group">
+              <label for="reason">Reason</label>
+              <input
+                id="reason"
+                type="text"
+                placeholder="Enter wastage reason"
+              />
+            </div>
+
+            <!-- User Name -->
+            <div class="input-group">
+              <label for="username">User Name</label>
+              <input id="username" type="text" placeholder="Enter your name" />
+            </div>
+          </form>
+
+          <!-- Submit Button -->
+          <button class="submit-btn" type="submit" form="poForm">
+            Save Record
+          </button>
         </div>
       </section>
+
       <!-- ========================= product table end ========================= -->
     </section>
     <!-- ========================= hero-section-wrapper-5 end ========================= -->
@@ -220,75 +234,11 @@
     <script src="assets/js/main.js"></script>
 
     <!-- ========================= Firebase Product Fetch ========================= -->
-
-    <script>
-      document
-        .querySelector(".action-btn")
-        .addEventListener("click", function () {
-          document.querySelector(".dropdown-menu").classList.toggle("show");
-        });
-
-      document.addEventListener("click", function (e) {
-        if (!document.querySelector(".action-dropdown").contains(e.target)) {
-          document.querySelector(".dropdown-menu").classList.remove("show");
-        }
-      });
-    </script>
-
-    <script>
-      // 🔎 Filter function for the table
-      function filterTable() {
-        const input = document.getElementById("tableSearch");
-        const filter = input.value.toLowerCase();
-        const table = document.getElementById("productTable");
-        const tr = table.getElementsByTagName("tr");
-
-        for (let i = 1; i < tr.length; i++) {
-          const tds = tr[i].getElementsByTagName("td");
-          let rowMatch = false;
-
-          for (let td of tds) {
-            if (td.textContent.toLowerCase().includes(filter)) {
-              rowMatch = true;
-              break;
-            }
-          }
-
-          tr[i].style.display = rowMatch ? "" : "none";
-        }
-      }
-    </script>
-
-    <script>
-      function copyToClipboard(id) {
-        if (!id) return;
-
-        navigator.clipboard
-          .writeText(id)
-          .then(() => {
-            // ✅ Feedback toast using SweetAlert2
-            Swal.fire({
-              toast: true,
-              position: "top-end",
-              icon: "success",
-              title: "Copied!",
-              text: `Product ID: ${id}`,
-              showConfirmButton: false,
-              timer: 1500,
-              timerProgressBar: true,
-            });
-          })
-          .catch((err) => {
-            console.error("Clipboard copy failed:", err);
-          });
-      }
-    </script>
+    <script type="module" src="wastelogs/fetchproduct.js"></script>
+    <script type="module" src="wastelogs/productsearch.js"></script>
+    <script type="module" src="wastelogs/addwastagelogs.js"></script>
+    <script type="module" src="billingauthentication.js"></script>
 
     <!-- ########################################################################################## -->
-
-    <script type="module" src="inventory/addproduct.js"></script>
-    <script type="module" src="inventory/deleteproduct.js"></script>
-    <script type="module" src="inventory/loadproductdata.js"></script>
-    <script type="module" src="billingauthentication.js"></script>
   </body>
 </html>

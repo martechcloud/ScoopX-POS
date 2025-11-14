@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>MARTECH CLOUD</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta1.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/lindy-uikit.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="supplier/supplierstyle.css" />
+
+    <!-- Setting up the serverside connection -->
+    <script type="module" src="setup.js"></script>
+  </head>
+  <body>
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ========================= preloader end ========================= -->
+
+    <!-- ========================= hero-section-wrapper-5 start ========================= -->
+    <section id="home" class="hero-section-wrapper-5">
+      <!-- ========================= header-6 start ========================= -->
+      <header class="header header-6">
+        <div class="navbar-area">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <nav
+                  class="navbar navbar-expand-lg"
+                  style="border-bottom: 2px solid #e3e3e7"
+                >
+                  <a
+                    class="navbar-brand"
+                    href="https://www.martechcloud.in/home"
+                  >
+                    <img
+                      src="assets/img/logo/Martech Cloud Logo2.png"
+                      alt="Logo"
+                    />
+                  </a>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent6"
+                    aria-controls="navbarSupportedContent6"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="toggler-icon"></span>
+                    <span class="toggler-icon"></span>
+                    <span class="toggler-icon"></span>
+                  </button>
+
+                  <div
+                    class="collapse navbar-collapse sub-menu-bar"
+                    id="navbarSupportedContent6"
+                  >
+                    <ul id="nav6" class="navbar-nav ms-auto align-items-center">
+                      <li class="nav-item me-3">
+                        <a class="page-scroll" href="index.html">New Order</a>
+                      </li>
+                      <li class="nav-item me-3">
+                        <a class="page-scroll" href="product.html">Inventory</a>
+                      </li>
+                      <a
+                        href="#0"
+                        title="Logout"
+                        onclick="googleLogout()"
+                        class="icon-btn logout"
+                        ><i class="lni lni-exit"></i
+                      ></a>
+                    </ul>
+
+                    <!-- Header Action Icons -->
+                  </div>
+                  <!-- navbar collapse -->
+                </nav>
+                <!-- navbar -->
+              </div>
+            </div>
+            <!-- row -->
+          </div>
+          <!-- container -->
+        </div>
+        <!-- navbar area -->
+      </header>
+      <!-- ========================= header-6 end ========================= -->
+
+      <!-- ========================= product table start ========================= -->
+      &nbsp; &nbsp;
+      <section
+        class="container"
+        style="padding-top: 100px; padding-bottom: 50px"
+      >
+        <!-- 🔹 Wastage Logs -->
+        <div class="form-container">
+          <h6>Add New Supplier</h6>
+          &nbsp;
+
+          <form class="po-form" id="poForm">
+            <!-- Record ID -->
+            <div class="input-group">
+              <label for="po-id">Supplier ID</label>
+              <input id="po-id" type="text" placeholder="SPL-XXXXXX" disabled />
+            </div>
+
+            <div class="input-group">
+              <label for="po-id">Supplier Name</label>
+              <input
+                class="suppliername"
+                id="suppliername"
+                type="text"
+                placeholder="Enter Supplier Name"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="po-id">Supplier Phone</label>
+              <input
+                class="supplierphone"
+                id="supplierphone"
+                type="tel"
+                placeholder="Enter Supplier Phone"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="po-id">Supplier Address</label>
+              <input
+                class="supplieraddress"
+                id="supplieraddress"
+                type="text"
+                placeholder="Enter Supplier Address"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="po-id">Supplier GST Number</label>
+              <input
+                class="suppliergst"
+                id="suppliergst"
+                type="text"
+                placeholder="Enter Supplier GST Number"
+              />
+            </div>
+          </form>
+
+          <!-- Submit Button -->
+          <button class="submit-btn" type="submit" form="poForm">
+            Add Supplier
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================= product table end ========================= -->
+    </section>
+
+    <!-- ========================= footer style-4 start ========================= -->
+    <footer class="footer footer-style-4">
+      <div class="container">
+        <div class="copyright-wrapper wow fadeInUp" data-wow-delay=".1s">
+          <p>
+            Design and Developed by
+            <a href="https://martechcloud.in" rel="nofollow" target="_blank"
+              >Martech Cloud</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========================= scroll-top start ========================= -->
+    <a href="#" class="scroll-top"> <i class="lni lni-chevron-up"></i> </a>
+    <!-- ========================= scroll-top end ========================= -->
+
+    <!-- ========================= JS here ========================= -->
+    <script src="assets/js/bootstrap-5.0.0-beta1.min.js"></script>
+    <script src="assets/js/tiny-slider.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- It add data to supplier table -->
+    <script type="module" src="supplier/addsupplier.js"></script>
+    <script type="module" src="billingauthentication.js"></script>
+
+    <!-- ########################################################################################## -->
+  </body>
+</html>
