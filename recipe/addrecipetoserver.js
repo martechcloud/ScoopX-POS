@@ -78,7 +78,7 @@ document
           INGREDIENT_ID: ingredientId,
           INGREDIENT_NAME: ingredientName,
           DEDUCTION_QUANTITY: deductionQty,
-          UNIT: unit,
+          PRODUCT_UNIT: unit,
           CREATED_AT: new Date().toLocaleString("en-IN"),
         };
 

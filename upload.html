@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Products to Firestore</title>
+  </head>
+  <body>
+    <h2>Upload CSV to Firestore</h2>
+    <input type="file" id="csvFile" accept=".csv" />
+    <button onclick="uploadCSV()">Upload</button>
+
+    <!-- ✅ Firebase CDN (compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script>
+      // ✅ Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyAOjTCwbLka0sfO6eEnfXZmGcwE2yMJwSA",
+        authDomain: "scoopx-ice-cream-cafe.firebaseapp.com",
+        projectId: "scoopx-ice-cream-cafe",
+        storageBucket: "scoopx-ice-cream-cafe.firebasestorage.app",
+        messagingSenderId: "800499847619",
+        appId: "1:800499847619:web:8008e9016d125f924c2d76",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+
+      // ✅ CSV Upload Function
+      async function uploadCSV() {
+        const fileInput = document.getElementById("csvFile");
+        const file = fileInput.files[0];
+        if (!file) {
+          alert("Please select a CSV file first!");
+          return;
+        }
+
+        const text = await file.text();
+        const rows = text.split("\n").map((r) => r.split(","));
+        const headers = rows.shift();
+
+        for (const row of rows) {
+          if (row.length < headers.length) continue;
+
+          const docData = {};
+          headers.forEach((h, i) => (docData[h.trim()] = row[i]?.trim()));
+
+          const productId = docData["RECIPE_ID"]; // 👈 Get PRODUCT_ID column value
+          if (!productId) continue; // Skip rows without an ID
+
+          await db
+            .collection("RECIPE_DATA_TABLE")
+            .doc(productId) // 👈 Use PRODUCT_ID as document ID
+            .set(docData, { merge: true }); // Optional: merge updates if doc exists
+        }
+
+        alert("✅ Products uploaded to Firestore successfully!");
+      }
+    </script>
+  </body>
+</html>

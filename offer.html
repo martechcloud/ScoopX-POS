@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScoopX Surprise Offer</title>
+
+    <script type="module" src="setup.js"></script>
+
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #ffe3ec, #ff8fab);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: #fff;
+        width: 90%;
+        max-width: 360px;
+        border-radius: 22px;
+        padding: 26px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        font-size: 30px;
+        font-weight: 800;
+      }
+      .logo span {
+        color: #ff4d6d;
+      }
+
+      h2 {
+        font-size: 18px;
+        color: #444;
+        margin: 10px 0 20px;
+      }
+
+      input {
+        width: 80%;
+        padding: 14px;
+        border-radius: 30px;
+        border: 2px solid #ffd1dc;
+        font-size: 15px;
+        text-align: center;
+        outline: none;
+      }
+
+      .error {
+        font-size: 12px;
+        color: #e63946;
+        margin-top: 6px;
+        display: none;
+      }
+
+      button {
+        margin-top: 16px;
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 40px;
+        border: none;
+        background: linear-gradient(135deg, #ff4d6d, #ff758f);
+        color: #fff;
+        font-weight: 600;
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      button.active {
+        cursor: pointer;
+        opacity: 1;
+      }
+
+      .loader {
+        display: none;
+        margin-top: 30px;
+      }
+
+      .dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        background: #ff4d6d;
+        border-radius: 50%;
+        animation: bounce 1.4s infinite both;
+      }
+
+      .dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes bounce {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+
+      .offer {
+        display: none;
+        margin-top: 22px;
+        padding: 18px;
+        background: linear-gradient(135deg, #fff3f6, #ffe0e9);
+        border-radius: 16px;
+        border: 2px dashed #ff4d6d;
+      }
+
+      .offer h3 {
+        color: #ff4d6d;
+        font-size: 20px;
+      }
+
+      .code {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .note {
+        font-size: 12px;
+        margin-top: 12px;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="logo"><span>ScoopX Ice Cream Cafe</span></div>
+      <h2>Unlock your magic offer 🍦</h2>
+
+      <input
+        id="phone"
+        type="tel"
+        placeholder="Enter your mobile number"
+        maxlength="10"
+        required
+      />
+      <div class="error" id="error">Enter valid 10-digit number</div>
+
+      <button id="revealBtn">Reveal My Magic Offer ✨</button>
+
+      <div class="loader" id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div style="font-size: 14px; margin-top: 10px">
+          Fetching today’s special scoop…
+        </div>
+      </div>
+
+      <div class="offer" id="offerBox">
+        <h3 id="offerText"></h3>
+        <div class="code">Your Code: <span id="code"></span></div>
+        <div class="note">
+          ✔ Show this at ScoopX counter<br />✔ Valid today only
+        </div>
+        <h4 id="dateText"></h4>
+      </div>
+      <p>📍 Near Ganpati Mandir, Pali • 📞 8087649190</p>
+    </div>
+
+    <footer class="footer">Powered by <strong>Martech Cloud</strong></footer>
+
+    <script type="module">
+      import {
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const phone = document.getElementById("phone");
+      const btn = document.getElementById("revealBtn");
+      const error = document.getElementById("error");
+
+      const offers = [
+        "₹50 OFF on bill above ₹249",
+        "Buy 1 Scoop, Get 2nd @ ₹49",
+        "Free Topping on any Ice Cream",
+        "Flat 10% OFF",
+        "Free Cone Upgrade",
+      ];
+
+      function isValidPhone(number) {
+        return /^[6-9]\d{9}$/.test(number);
+      }
+
+      phone.addEventListener("input", () => {
+        phone.value = phone.value.replace(/\D/g, "");
+
+        if (isValidPhone(phone.value)) {
+          error.style.display = "none";
+          btn.classList.add("active");
+          btn.disabled = false;
+        } else {
+          error.style.display = phone.value.length ? "block" : "none";
+          btn.classList.remove("active");
+          btn.disabled = true;
+        }
+      });
+
+      btn.addEventListener("click", async () => {
+        if (!isValidPhone(phone.value)) {
+          error.style.display = "block";
+          phone.focus();
+          return;
+        }
+
+        btn.style.display = "none";
+        document.getElementById("loader").style.display = "block";
+
+        setTimeout(async () => {
+          const selectedOffer =
+            offers[Math.floor(Math.random() * offers.length)];
+
+          const offerCode = `SX${phone.value.slice(-4)}-${Math.random()
+            .toString(36)
+            .substring(2, 6)
+            .toUpperCase()}-${Date.now().toString().slice(-4)}`;
+
+          const offerDate = new Date().toDateString();
+
+          // ✅ Show to user
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("offerBox").style.display = "block";
+          document.getElementById("offerText").innerText = selectedOffer;
+          document.getElementById("code").innerText = offerCode;
+          document.getElementById("dateText").innerText = offerDate;
+
+          // 🔥 SAVE TO FIRESTORE
+          try {
+            await addDoc(collection(window.firebaseDB, "scoopx_offer"), {
+              phoneNumber: phone.value,
+              offer: selectedOffer,
+              offerCode: offerCode,
+              offerDate: offerDate,
+              createdAt: serverTimestamp(),
+              source: "QR Flyer",
+            });
+          } catch (err) {
+            console.error("Firestore Error:", err);
+          }
+        }, 2200);
+      });
+    </script>
+  </body>
+</html>

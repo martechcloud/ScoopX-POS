@@ -26,19 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🧾 Function to store record in Inventory Logs
   async function saveInventoryLog(item) {
     const logId = generateRandomId();
-    const date = new Date();
+    const date = new Date().toISOString();
 
     try {
       await setDoc(doc(collection(db, "INVENTORY_LOGS_DATA_TABLE"), logId), {
-        ID: logId,
+        INVENTORY_LOG_ID: logId,
         PRODUCT_ID: item.productId || "",
         TRANSACTION_TYPE: "waste",
-        QUANTITY: item.quantity || 0,
+        PRODUCT_QUANTITY: item.quantity || 0,
         DIRECTION: "out",
-        DATE: date.toISOString(),
-        CREATED_AT: serverTimestamp(),
-        source: "Waste",
+        SOURCE: "WASTAGE_DATA_TABLE",
         sourceId: recordID,
+        CREATED_AT: date,
       });
 
       console.log("✅ Inventory log added:", logId);
@@ -77,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
         PRODUCT_ID: productID,
         PRODUCT_NAME: productName,
         QUANTITY_LOST: quantityLost,
-        UNIT: quantityUnit,
-        REASON: reason,
+        PRODUCT_UNIT: quantityUnit,
+        WASTAGE_REASON: reason,
         USER_NAME: userName,
         CREATED_AT: serverTimestamp(),
       });

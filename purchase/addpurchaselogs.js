@@ -68,16 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const purchaseDocId = generateRandomId("PUR");
 
         const purchaseRecord = {
-          poId: PURId,
-          supplierId,
-          supplierName,
-          orderDate,
-          productId: item.productId,
-          quantity: item.quantity,
-          unit: item.unit,
-          cost: item.cost,
-          total: item.quantity * item.cost,
-          createdAt: serverTimestamp(),
+          PURCHASE_ID: PURId,
+          SUPPLIER_ID: supplierId,
+          SUPPLIER_NAME: supplierName,
+          PURCHASE_DATE: orderDate,
+          PRODUCT_ID: item.productId,
+          PRODUCT_QUANTITY: item.quantity,
+          PRODUCT_UNIT: item.unit,
+          PURCHASE_COST: item.cost,
+          TOTAL_COST: item.quantity * item.cost,
+          CREATED_AT: serverTimestamp(),
         };
 
         // 🔹 Save Purchase Record
@@ -90,14 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const inventoryLogId = generateRandomId("INV");
 
         const inventoryRecord = {
-          id: inventoryLogId,
-          productId: item.productId,
-          quantity: item.quantity,
-          direction: "in",
-          transactionType: "purchase",
-          source: "Purchase",
-          sourceId: PURId,
-          date: new Date().toISOString(),
+          INVENTORY_LOG_ID: inventoryLogId,
+          PRODUCT_ID: item.productId,
+          TRANSACTION_TYPE: "purchase",
+          PRODUCT_QUANTITY: item.quantity,
+          DIRECTION: "in",
+          SOURCE: "PURCHASE_DATA_TABLE",
+          SOURCE_ID: PURId,
+          CREATED_AT: new Date().toISOString(),
         };
 
         await setDoc(
